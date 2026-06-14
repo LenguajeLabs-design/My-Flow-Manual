@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">MacBook Shortcuts Icon</title>
+  <desc id="desc">Badge icon representing MacBook shortcuts and workflows.</desc>
+  <defs>
+    <style>
+      .ink{fill:#172533}
+      .blue{fill:#2f7dd3}
+      .teal{fill:#10a7a5}
+      .soft{fill:#e7f7f6}
+      .stroke{fill:none;stroke:#172533;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+      .stroke-blue{fill:none;stroke:#2f7dd3;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+      .stroke-teal{fill:none;stroke:#10a7a5;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+    </style>
+  </defs>
+  <rect x="18" y="18" width="92" height="92" rx="24" class="soft"/>
+  <path d="M35 39h58v38H35z" class="stroke"/>
+  <path d="M26 89h76l-9-12H35z" class="stroke-blue"/>
+  <path d="M54 58h20" class="stroke-teal"/>
+  <path d="M64 48v20" class="stroke-teal"/>
+  <circle cx="52" cy="46" r="3.5" class="blue"/>
+  <circle cx="76" cy="70" r="3.5" class="teal"/>
+</svg>

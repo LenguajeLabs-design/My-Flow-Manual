@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MacBook Shortcuts Guide</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/identity/my-flow-manual-mark.svg">
   <style>
     :root {
       --bg: #edf5f5;
@@ -81,6 +82,20 @@
       background: rgba(248, 254, 254, 0.82);
       box-shadow: 0 18px 40px rgba(24, 34, 45, 0.12);
       backdrop-filter: blur(18px);
+    }
+
+    .nav-mark {
+      width: 28px;
+      height: 28px;
+      display: block;
+      flex: 0 0 auto;
+    }
+
+    .nav-wordmark {
+      width: 88px;
+      height: auto;
+      display: block;
+      flex: 0 0 auto;
     }
 
     body[data-theme="dark"] .floating-nav {
@@ -507,8 +522,9 @@
 <body>
   <main class="shell">
     <nav class="floating-nav" aria-label="Guide navigation">
+      <img class="nav-mark" src="../assets/identity/my-flow-manual-mark.svg" alt="">
       <a href="../index.html">Home</a>
-      <a href="https://lenguajelabs-design.github.io/openclaw-cheatsheet/" target="_blank" rel="noreferrer">OpenClaw</a>
+      <a href="https://lenguajelabs-design.github.io/openclaw-cheatsheet/" target="_blank" rel="noreferrer"><img class="nav-wordmark" src="../assets/identity/openclaw-logo.svg" alt="OpenClaw"></a>
       <a href="macbook-shortcuts-guide.html" class="active">MacBook</a>
       <a href="codex-guide.html">Codex</a>
       <a href="ipad-guide.html">iPad</a>

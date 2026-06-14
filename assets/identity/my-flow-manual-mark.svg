@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">My Flow Manual Mark</title>
+  <desc id="desc">Icon-only mark for My Flow Manual.</desc>
+  <defs>
+    <style>
+      .ink{fill:#172533}
+      .blue{fill:#2f7dd3}
+      .teal{fill:#10a7a5}
+      .soft{fill:#e7f7f6}
+      .stroke-blue{fill:none;stroke:#2f7dd3;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+      .stroke-ink{fill:none;stroke:#172533;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+      .stroke-teal{fill:none;stroke:#10a7a5;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+    </style>
+  </defs>
+  <rect x="18" y="18" width="92" height="92" rx="24" class="soft"/>
+  <path d="M40 42h29c12 0 21 9 21 21s-9 21-21 21H51" class="stroke-blue"/>
+  <path d="M51 84L38 71l13-13" class="stroke-blue"/>
+  <path d="M41 94h37" class="stroke-teal"/>
+  <circle cx="40" cy="42" r="7" class="teal"/>
+  <circle cx="87" cy="94" r="7" class="blue"/>
+</svg>

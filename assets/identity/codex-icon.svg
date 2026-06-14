@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Codex Collaboration Icon</title>
+  <desc id="desc">Badge icon representing Codex, AI collaboration, and building with an assistant.</desc>
+  <defs>
+    <style>
+      .ink{fill:#172533}
+      .blue{fill:#2f7dd3}
+      .teal{fill:#10a7a5}
+      .soft{fill:#e7f7f6}
+      .stroke{fill:none;stroke:#172533;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+      .stroke-blue{fill:none;stroke:#2f7dd3;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+      .stroke-teal{fill:none;stroke:#10a7a5;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+    </style>
+  </defs>
+  <rect x="18" y="18" width="92" height="92" rx="24" class="soft"/>
+  <path d="M44 48L30 64l14 16" class="stroke-blue"/>
+  <path d="M84 48l14 16-14 16" class="stroke-blue"/>
+  <path d="M58 86l14-44" class="stroke-teal"/>
+  <circle cx="64" cy="64" r="8" class="ink"/>
+  <path d="M64 36v-8" class="stroke-teal"/>
+  <path d="M64 100v-8" class="stroke-teal"/>
+  <path d="M92 64h8" class="stroke-teal"/>
+  <path d="M28 64h8" class="stroke-teal"/>
+</svg>
