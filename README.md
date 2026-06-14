@@ -5,6 +5,7 @@ A personal collection of simple, visual guides that help me learn the shortcuts,
 ## Live structure
 
 - `index.html`: homepage for the collection
+- external OpenClaw guide: `https://lenguajelabs-design.github.io/openclaw-cheatsheet/`
 - `outputs/macbook-shortcuts-guide.html`: first published guide
 - `outputs/codex-guide.html`: second published guide
 - `outputs/ipad-guide.html`: third published guide
