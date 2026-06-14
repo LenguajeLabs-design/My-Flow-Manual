@@ -50,15 +50,15 @@
       background:
         radial-gradient(circle at top left, var(--hero-glow-1), transparent 24%),
         radial-gradient(circle at top right, var(--hero-glow-2), transparent 22%),
-        linear-gradient(180deg, #f7f9fc 0%, var(--bg) 100%);
+        linear-gradient(180deg, #f7f9fe 0%, var(--bg) 100%);
       line-height: 1.55;
       transition: background 220ms ease, color 220ms ease;
     }
 
     .shell {
-      max-width: 1180px;
+      max-width: 1360px;
       margin: 0 auto;
-      padding: 100px 20px 72px;
+      padding: 34px 22px 72px;
     }
 
     .floating-nav {
@@ -75,8 +75,8 @@
       justify-content: center;
       border: 1px solid var(--line);
       border-radius: 999px;
-      background: rgba(248, 254, 254, 0.82);
-      box-shadow: 0 18px 40px rgba(24, 34, 45, 0.12);
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: 0 10px 24px rgba(63, 92, 141, 0.08);
       backdrop-filter: blur(18px);
     }
 
@@ -125,7 +125,7 @@
     .hero {
       position: relative;
       overflow: hidden;
-      padding: 32px;
+      padding: 40px 40px 34px;
       background:
         linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(242, 247, 255, 0.9)),
         var(--panel);
@@ -190,30 +190,31 @@
     }
 
     .hero p {
-      max-width: 60ch;
+      max-width: 38ch;
       color: var(--muted);
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       margin-bottom: 0;
+      line-height: 1.55;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.55fr 1fr;
-      gap: 20px;
-      align-items: end;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 30px;
+      align-items: start;
     }
 
     .mini-board {
       display: grid;
-      gap: 12px;
+      gap: 14px;
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .mini-card {
       border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 16px;
-      background: rgba(255, 255, 255, 0.76);
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.82);
     }
 
     body[data-theme="dark"] .mini-card {
@@ -665,7 +666,7 @@
       themeToggle.setAttribute("aria-pressed", String(dark));
     }
 
-    applyTheme(storedTheme || (prefersDark ? "dark" : "light"));
+    applyTheme(storedTheme || "light");
 
     themeToggle.addEventListener("click", () => {
       const nextTheme = body.dataset.theme === "dark" ? "light" : "dark";

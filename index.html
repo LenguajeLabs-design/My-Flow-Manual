@@ -7,35 +7,35 @@
   <link rel="icon" type="image/svg+xml" href="assets/identity/my-flow-manual-mark.svg">
   <style>
     :root {
-      --bg: #edf5f5;
-      --panel: rgba(248, 254, 254, 0.92);
-      --panel-strong: #ffffff;
-      --ink: #17212b;
-      --muted: #667381;
-      --line: rgba(23, 33, 43, 0.12);
-      --accent: #138a8f;
-      --accent-soft: rgba(19, 138, 143, 0.12);
-      --accent-2: #4a7fd1;
-      --shadow: 0 24px 60px rgba(52, 80, 96, 0.12);
-      --radius: 24px;
+      --bg: #f7f9fe;
+      --bg-2: #f2f8fb;
+      --panel: rgba(255, 255, 255, 0.78);
+      --panel-strong: rgba(255, 255, 255, 0.92);
+      --ink: #17315a;
+      --muted: #51688d;
+      --line: rgba(23, 49, 90, 0.1);
+      --accent: #159c9f;
+      --accent-2: #2f74d7;
+      --accent-soft: rgba(21, 156, 159, 0.12);
+      --shadow: 0 16px 40px rgba(63, 92, 141, 0.12);
+      --shadow-soft: 0 10px 24px rgba(63, 92, 141, 0.08);
+      --radius: 28px;
       --sans: "Avenir Next", "Segoe UI", sans-serif;
-      --hero-glow-1: rgba(19, 138, 143, 0.16);
-      --hero-glow-2: rgba(74, 127, 209, 0.15);
     }
 
     body[data-theme="dark"] {
-      --bg: #0f141a;
-      --panel: rgba(22, 29, 37, 0.92);
-      --panel-strong: #171e25;
-      --ink: #ecf3fb;
-      --muted: #9eb0c2;
-      --line: rgba(236, 243, 251, 0.1);
-      --accent: #ff9a5c;
-      --accent-soft: rgba(255, 154, 92, 0.14);
-      --accent-2: #75c8bc;
-      --shadow: 0 24px 60px rgba(0, 0, 0, 0.34);
-      --hero-glow-1: rgba(255, 154, 92, 0.14);
-      --hero-glow-2: rgba(117, 200, 188, 0.12);
+      --bg: #0d1420;
+      --bg-2: #101927;
+      --panel: rgba(24, 32, 46, 0.76);
+      --panel-strong: rgba(25, 34, 49, 0.92);
+      --ink: #edf4ff;
+      --muted: #a6b7d1;
+      --line: rgba(237, 244, 255, 0.1);
+      --accent: #4fd2d2;
+      --accent-2: #79a8ff;
+      --accent-soft: rgba(79, 210, 210, 0.14);
+      --shadow: 0 16px 44px rgba(0, 0, 0, 0.28);
+      --shadow-soft: 0 10px 24px rgba(0, 0, 0, 0.2);
     }
 
     * { box-sizing: border-box; }
@@ -45,49 +45,27 @@
       font-family: var(--sans);
       color: var(--ink);
       background:
-        radial-gradient(circle at top left, var(--hero-glow-1), transparent 24%),
-        radial-gradient(circle at top right, var(--hero-glow-2), transparent 22%),
-        linear-gradient(180deg, #f7fcfc 0%, var(--bg) 100%);
-      line-height: 1.5;
+        radial-gradient(circle at top left, rgba(39, 212, 209, 0.24), transparent 22%),
+        radial-gradient(circle at top right, rgba(86, 144, 255, 0.2), transparent 20%),
+        radial-gradient(circle at center right, rgba(255, 194, 122, 0.14), transparent 22%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+      line-height: 1.45;
       transition: background 220ms ease, color 220ms ease;
     }
 
     .shell {
-      max-width: 1120px;
+      max-width: 1360px;
       margin: 0 auto;
-      padding: 32px 20px 64px;
-    }
-
-    .hero,
-    .section {
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      background: var(--panel);
-      box-shadow: var(--shadow);
+      padding: 34px 22px 64px;
     }
 
     .hero {
-      padding: 34px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      right: -50px;
-      top: -50px;
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(19, 138, 143, 0.16), transparent 68%);
-      pointer-events: none;
-    }
-
-    body[data-theme="dark"] .hero {
-      background:
-        linear-gradient(135deg, rgba(26, 34, 44, 0.95), rgba(18, 24, 31, 0.92)),
-        var(--panel);
+      padding: 34px 36px 30px;
+      border: 1px solid var(--line);
+      border-radius: 38px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
     }
 
     .hero-topbar {
@@ -95,7 +73,7 @@
       justify-content: space-between;
       gap: 16px;
       align-items: start;
-      margin-bottom: 18px;
+      margin-bottom: 28px;
     }
 
     .brand-lockup img {
@@ -106,30 +84,25 @@
 
     .theme-toggle {
       border: 1px solid var(--line);
-      background: var(--panel-strong);
-      color: var(--ink);
+      background: linear-gradient(180deg, rgba(22, 48, 88, 0.98), rgba(16, 32, 60, 0.98));
+      color: #f3f8ff;
       border-radius: 999px;
-      padding: 10px 14px;
+      padding: 14px 20px;
       font: inherit;
+      font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 8px 18px rgba(24, 34, 45, 0.08);
-      transition: transform 160ms ease, background 160ms ease;
+      box-shadow: 0 10px 22px rgba(18, 37, 70, 0.18);
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    body[data-theme="dark"] .theme-toggle {
+      background: linear-gradient(180deg, rgba(21, 30, 44, 0.98), rgba(12, 18, 29, 0.98));
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.26);
     }
 
     .theme-toggle:hover {
       transform: translateY(-1px);
-    }
-
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 16px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      box-shadow: 0 14px 28px rgba(18, 37, 70, 0.2);
     }
 
     h1, h2, h3, p {
@@ -137,86 +110,112 @@
     }
 
     h1 {
-      max-width: 10ch;
-      font-size: clamp(3rem, 7vw, 5.8rem);
-      line-height: 0.94;
-      letter-spacing: -0.05em;
-      margin-bottom: 14px;
+      max-width: 7.2ch;
+      font-size: clamp(4.25rem, 8vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      margin-bottom: 18px;
+      font-weight: 800;
     }
 
     .hero p {
-      max-width: 58ch;
+      max-width: 31ch;
       color: var(--muted);
-      font-size: 1.05rem;
+      font-size: 1.08rem;
+      line-height: 1.55;
       margin-bottom: 0;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.4fr 0.9fr;
-      gap: 20px;
-      align-items: end;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 34px;
+      align-items: start;
     }
 
-    .pill-grid {
+    .resource-grid {
       display: grid;
-      gap: 12px;
+      gap: 14px;
       grid-template-columns: repeat(2, minmax(0, 1fr));
+      padding-top: 10px;
     }
 
-    .pill {
-      padding: 16px;
-      border-radius: 18px;
+    .resource-card {
       border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.76);
+      border-radius: 24px;
+      background: var(--panel-strong);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(10px);
+      padding: 18px 20px;
+      min-height: 116px;
     }
 
-    body[data-theme="dark"] .pill {
-      background: rgba(24, 31, 39, 0.88);
+    .resource-card.wide {
+      grid-column: 1 / -1;
+      min-height: 82px;
     }
 
-    .pill strong {
+    .resource-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+
+    .resource-icon {
+      width: 58px;
+      height: 58px;
+      flex: 0 0 auto;
+      object-fit: contain;
+    }
+
+    .resource-wordmark {
+      width: 150px;
+      height: auto;
       display: block;
-      margin-bottom: 6px;
-      font-size: 1rem;
     }
 
-    .pill span {
+    .resource-title {
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .resource-text {
       color: var(--muted);
-      font-size: 0.92rem;
+      font-size: 0.98rem;
+      line-height: 1.5;
     }
 
     .section {
-      margin-top: 28px;
-      padding: 28px;
+      margin-top: 26px;
     }
 
     .section-head {
       display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: end;
-      margin-bottom: 20px;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      color: var(--ink);
     }
 
-    .section-head p {
-      color: var(--muted);
-      max-width: 48ch;
+    .section-mark {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+
+    .section-head h2 {
       margin-bottom: 0;
-    }
-
-    .label {
-      color: var(--accent-2);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.84rem;
-      margin-bottom: 8px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
     }
 
     .guide-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
     }
 
     .guide-card,
@@ -224,87 +223,152 @@
       display: block;
       text-decoration: none;
       color: inherit;
-      padding: 20px;
-      border-radius: 22px;
+      padding: 18px 18px 20px;
+      border-radius: 24px;
       border: 1px solid var(--line);
       background: var(--panel-strong);
-      transition: transform 160ms ease, box-shadow 160ms ease;
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(10px);
     }
 
-    .guide-card-head {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 8px;
+    .guide-logo {
+      height: 58px;
+      width: auto;
+      max-width: 100%;
+      display: block;
+      margin: 2px auto 14px;
     }
 
     .guide-icon {
-      width: 40px;
-      height: 40px;
-      flex: 0 0 auto;
-    }
-
-    .guide-wordmark {
-      width: 152px;
-      height: auto;
+      width: 74px;
+      height: 74px;
+      object-fit: contain;
       display: block;
-      flex: 0 0 auto;
+      margin: 0 auto 12px;
     }
 
-    .guide-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 18px 36px rgba(23, 33, 43, 0.08);
-    }
-
-    .guide-card strong,
-    .queue-card strong {
-      display: block;
+    .guide-card h3 {
+      font-size: 1rem;
+      text-align: center;
       margin-bottom: 8px;
-      font-size: 1.08rem;
+      letter-spacing: -0.03em;
     }
 
-    .guide-card span,
-    .queue-card span {
-      display: block;
+    .guide-card p {
       color: var(--muted);
       font-size: 0.94rem;
-      margin-bottom: 14px;
+      line-height: 1.45;
+      text-align: center;
+      margin-bottom: 16px;
     }
 
-    .guide-tag,
-    .queue-tag {
+    .guide-meta {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .guide-tag {
       display: inline-block;
-      padding: 7px 10px;
+      padding: 7px 12px;
       border-radius: 999px;
       font-size: 0.8rem;
       background: var(--accent-soft);
       color: var(--accent);
+      font-weight: 800;
+    }
+
+    .guide-link {
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 0.95rem;
     }
 
     .queue-card {
-      background: rgba(255, 255, 255, 0.58);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 18px;
+      padding: 18px 22px;
     }
 
-    body[data-theme="dark"] .queue-card {
-      background: rgba(24, 31, 39, 0.56);
+    .browser-icons {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .browser-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #fff;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.22);
+    }
+
+    .browser-badge.safari { background: linear-gradient(135deg, #1ca0ff, #2e68ff); }
+    .browser-badge.brave { background: linear-gradient(135deg, #ff7a18, #ff4d2d); }
+    .browser-badge.chrome { background: linear-gradient(135deg, #ffd54b, #ff4b4b 58%, #3a7cff); }
+
+    .queue-text h3 {
+      margin-bottom: 6px;
+      font-size: 1rem;
+      letter-spacing: -0.03em;
+    }
+
+    .queue-text p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .queue-pill {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(47, 116, 215, 0.12);
+      color: var(--accent-2);
+      font-size: 0.8rem;
+      font-weight: 800;
+      white-space: nowrap;
     }
 
     footer {
-      margin-top: 28px;
+      margin-top: 22px;
       color: var(--muted);
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       text-align: center;
     }
 
-    @media (max-width: 860px) {
+    @media (max-width: 1180px) {
       .hero-grid,
-      .section-head {
+      .guide-grid {
         grid-template-columns: 1fr;
-        display: grid;
       }
 
-      h1 {
-        max-width: none;
+      .resource-grid {
+        padding-top: 0;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .resource-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .resource-card.wide {
+        grid-column: auto;
+      }
+
+      .queue-card {
+        grid-template-columns: 1fr;
+        justify-items: start;
       }
     }
 
@@ -313,19 +377,19 @@
         padding: 18px 14px 40px;
       }
 
-      .hero,
-      .section {
+      .hero {
         padding: 20px;
-        border-radius: 24px;
-      }
-
-      .pill-grid {
-        grid-template-columns: 1fr;
+        border-radius: 28px;
       }
 
       .hero-topbar {
         flex-direction: column;
         align-items: start;
+      }
+
+      h1 {
+        max-width: none;
+        font-size: clamp(3.4rem, 18vw, 5rem);
       }
     }
   </style>
@@ -339,31 +403,50 @@
         </div>
         <button class="theme-toggle" type="button" id="themeToggle" aria-pressed="false">Night Mode: Off</button>
       </div>
+
       <div class="hero-grid">
         <div>
           <h1>A growing library of practical shortcut guides.</h1>
           <p>Simple, visual references for learning the tools I use most, from MacBook and iPad workflows to Codex and OpenClaw.</p>
         </div>
-        <div class="pill-grid">
-          <div class="pill">
-            <strong>MacBook</strong>
-            <span>Shortcuts, gestures, and the small setup wins worth remembering.</span>
+
+        <div class="resource-grid">
+          <div class="resource-card">
+            <div class="resource-head">
+              <img class="resource-icon" src="assets/identity/macbook-icon.svg" alt="">
+              <div class="resource-title">MacBook</div>
+            </div>
+            <div class="resource-text">Shortcuts, gestures, and setup wins.</div>
           </div>
-          <div class="pill">
-            <strong>Codex</strong>
-            <span>Prompt patterns, app workflow, and better ways to collaborate with Codex.</span>
+
+          <div class="resource-card">
+            <div class="resource-head">
+              <img class="resource-icon" src="assets/identity/codex-icon.svg" alt="">
+              <div class="resource-title">Codex</div>
+            </div>
+            <div class="resource-text">Prompt patterns, workflow, and app tips.</div>
           </div>
-          <div class="pill">
-            <strong>iPad</strong>
-            <span>Gestures, multitasking, keyboard flow, and everyday touch-friendly habits.</span>
+
+          <div class="resource-card">
+            <div class="resource-head">
+              <img class="resource-icon" src="assets/identity/ipad-icon.svg" alt="">
+              <div class="resource-title">iPad</div>
+            </div>
+            <div class="resource-text">Gestures, multitasking, and everyday habits.</div>
           </div>
-          <div class="pill">
-            <strong>OpenClaw</strong>
-            <span>External guide for commands, automation patterns, and workflow fluency.</span>
+
+          <div class="resource-card">
+            <div class="resource-head">
+              <img class="resource-wordmark" src="assets/identity/openclaw-logo.svg" alt="OpenClaw">
+            </div>
+            <div class="resource-text">Commands, automation patterns, and workflows.</div>
           </div>
-          <div class="pill">
-            <strong>Browsers</strong>
-            <span>Safari, Brave, and Chrome are next in the same practical format.</span>
+
+          <div class="resource-card wide">
+            <div class="resource-head">
+              <div class="resource-title">Browsers</div>
+            </div>
+            <div class="resource-text">Safari, Brave, and Chrome guides coming next.</div>
           </div>
         </div>
       </div>
@@ -371,71 +454,68 @@
 
     <section class="section">
       <div class="section-head">
-        <div>
-          <div class="label">Collection</div>
-          <h2>Published guides</h2>
-        </div>
-        <p>Each guide is designed to be quick to scan, easy to remember, and useful enough to revisit.</p>
+        <img class="section-mark" src="assets/identity/my-flow-manual-mark.svg" alt="">
+        <h2>Published guides</h2>
       </div>
+
       <div class="guide-grid">
         <a class="guide-card" href="https://lenguajelabs-design.github.io/openclaw-cheatsheet/" target="_blank" rel="noreferrer">
-          <div class="guide-card-head">
-            <img class="guide-wordmark" src="assets/identity/openclaw-logo.svg" alt="OpenClaw">
-          </div>
-          <span>Your original external guide for learning OpenClaw commands, automation patterns, and agent workflows.</span>
-          <span class="guide-tag">External</span>
+          <img class="guide-logo" src="assets/identity/openclaw-logo.svg" alt="OpenClaw">
+          <div class="guide-meta"><span class="guide-tag">External</span></div>
+          <p>Your external guide for learning OpenClaw commands, automation patterns, and agent workflows.</p>
+          <div class="guide-meta"><span class="guide-link">Open guide ↗</span></div>
         </a>
+
         <a class="guide-card" href="outputs/macbook-shortcuts-guide.html">
-          <div class="guide-card-head">
-            <img class="guide-icon" src="assets/identity/macbook-icon.svg" alt="">
-            <strong>MacBook</strong>
-          </div>
-          <span>Keyboard shortcuts, Finder flow, multitasking moves, trackpad gestures, and key-location help.</span>
-          <span class="guide-tag">Guide 01</span>
+          <img class="guide-icon" src="assets/identity/macbook-icon.svg" alt="">
+          <h3>MacBook</h3>
+          <p>Keyboard shortcuts, Finder flow, multitasking moves, trackpad gestures, and key-location help.</p>
+          <div class="guide-meta"><span class="guide-link">Open guide →</span></div>
         </a>
+
         <a class="guide-card" href="outputs/codex-guide.html">
-          <div class="guide-card-head">
-            <img class="guide-icon" src="assets/identity/codex-icon.svg" alt="">
-            <strong>Codex</strong>
-          </div>
-          <span>How to ask better, manage files and browser work, and turn Codex into a strong daily collaborator.</span>
-          <span class="guide-tag">Guide 02</span>
+          <img class="guide-icon" src="assets/identity/codex-icon.svg" alt="">
+          <h3>Codex</h3>
+          <p>How to ask better, manage files and browser work, and turn Codex into a strong daily collaborator.</p>
+          <div class="guide-meta"><span class="guide-link">Open guide →</span></div>
         </a>
+
         <a class="guide-card" href="outputs/ipad-guide.html">
-          <div class="guide-card-head">
-            <img class="guide-icon" src="assets/identity/ipad-icon.svg" alt="">
-            <strong>iPad</strong>
-          </div>
-          <span>Practical gestures, multitasking moves, keyboard shortcuts, editing tricks, and daily-use habits.</span>
-          <span class="guide-tag">Guide 03</span>
+          <img class="guide-icon" src="assets/identity/ipad-icon.svg" alt="">
+          <h3>iPad</h3>
+          <p>Practical gestures, multitasking moves, keyboard shortcuts, editing tricks, and daily-use habits.</p>
+          <div class="guide-meta"><span class="guide-link">Open guide →</span></div>
         </a>
       </div>
     </section>
 
     <section class="section">
       <div class="section-head">
-        <div>
-          <div class="label">Queue</div>
-          <h2>Coming next</h2>
-        </div>
-        <p>The library structure is ready, so each new guide can slot in naturally.</p>
+        <img class="section-mark" src="assets/identity/my-flow-manual-mark.svg" alt="">
+        <h2>Coming next</h2>
       </div>
-      <div class="guide-grid">
-        <div class="queue-card">
-          <strong>Safari, Brave, and Chrome</strong>
-          <span>Tabs, windows, searching, navigation, and the power-user moves that actually stick.</span>
-          <span class="queue-tag">Guide 04+</span>
+
+      <div class="queue-card">
+        <div class="browser-icons" aria-hidden="true">
+          <div class="browser-badge safari">S</div>
+          <div class="browser-badge brave">B</div>
+          <div class="browser-badge chrome">C</div>
         </div>
+        <div class="queue-text">
+          <h3>Safari, Brave, and Chrome</h3>
+          <p>Tabs, windows, searching, navigation, and the power-user moves that actually stick.</p>
+        </div>
+        <span class="queue-pill">Guide 04+</span>
       </div>
     </section>
 
     <footer>A personal shortcut library, built one useful guide at a time.</footer>
   </main>
+
   <script>
     const body = document.body;
     const themeToggle = document.getElementById("themeToggle");
     const storedTheme = localStorage.getItem("my-flow-manual-theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
     function applyTheme(theme) {
       body.dataset.theme = theme;
@@ -444,7 +524,7 @@
       themeToggle.setAttribute("aria-pressed", String(dark));
     }
 
-    applyTheme(storedTheme || (prefersDark ? "dark" : "light"));
+    applyTheme(storedTheme || "light");
 
     themeToggle.addEventListener("click", () => {
       const nextTheme = body.dataset.theme === "dark" ? "light" : "dark";
