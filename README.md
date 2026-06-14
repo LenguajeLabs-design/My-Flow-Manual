@@ -7,10 +7,10 @@ A personal collection of simple, visual guides that help me learn the shortcuts,
 - `index.html`: homepage for the collection
 - `outputs/macbook-shortcuts-guide.html`: first published guide
 - `outputs/codex-guide.html`: second published guide
+- `outputs/ipad-guide.html`: third published guide
 
 ## Planned next guides
 
-- iPad
 - Safari
 - Brave
 - Chrome

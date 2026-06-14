@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iPad Guide</title>
+  <style>
+    :root {
+      --bg: #eef1f6;
+      --panel: rgba(252, 253, 255, 0.92);
+      --panel-strong: #ffffff;
+      --ink: #15202b;
+      --muted: #627285;
+      --line: rgba(21, 32, 43, 0.12);
+      --accent: #2d70d6;
+      --accent-soft: rgba(45, 112, 214, 0.12);
+      --accent-2: #e57b43;
+      --shadow: 0 24px 60px rgba(53, 74, 106, 0.12);
+      --radius: 24px;
+      --mono: "SFMono-Regular", "Menlo", "Monaco", monospace;
+      --sans: "Avenir Next", "Segoe UI", sans-serif;
+      --hero-glow-1: rgba(45, 112, 214, 0.16);
+      --hero-glow-2: rgba(229, 123, 67, 0.14);
+      --chip-bg: linear-gradient(180deg, #fff 0%, #eef4fb 100%);
+    }
+
+    body[data-theme="dark"] {
+      --bg: #0d141d;
+      --panel: rgba(21, 29, 39, 0.92);
+      --panel-strong: #17202a;
+      --ink: #edf4fb;
+      --muted: #9cb0c6;
+      --line: rgba(237, 244, 251, 0.1);
+      --accent: #7cb0ff;
+      --accent-soft: rgba(124, 176, 255, 0.14);
+      --accent-2: #ffab7b;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.36);
+      --hero-glow-1: rgba(124, 176, 255, 0.13);
+      --hero-glow-2: rgba(255, 171, 123, 0.12);
+      --chip-bg: linear-gradient(180deg, #273443 0%, #1a232d 100%);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, var(--hero-glow-1), transparent 24%),
+        radial-gradient(circle at top right, var(--hero-glow-2), transparent 22%),
+        linear-gradient(180deg, #f7f9fc 0%, var(--bg) 100%);
+      line-height: 1.55;
+      transition: background 220ms ease, color 220ms ease;
+    }
+
+    .shell {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px 20px 72px;
+    }
+
+    .hero,
+    .section {
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 32px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(242, 247, 255, 0.9)),
+        var(--panel);
+    }
+
+    body[data-theme="dark"] .hero {
+      background:
+        linear-gradient(135deg, rgba(22, 31, 41, 0.96), rgba(14, 20, 28, 0.92)),
+        var(--panel);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -90px;
+      bottom: -120px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(45, 112, 214, 0.16), transparent 68%);
+      pointer-events: none;
+    }
+
+    .hero-topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 18px;
+    }
+
+    .theme-toggle {
+      border: 1px solid var(--line);
+      background: var(--panel-strong);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--accent-soft);
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      max-width: 11ch;
+      font-size: clamp(3rem, 6vw, 5.4rem);
+      line-height: 0.96;
+      margin-bottom: 14px;
+      letter-spacing: -0.05em;
+    }
+
+    .hero p {
+      max-width: 60ch;
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.55fr 1fr;
+      gap: 20px;
+      align-items: end;
+    }
+
+    .mini-board {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .mini-card {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.76);
+    }
+
+    body[data-theme="dark"] .mini-card {
+      background: rgba(24, 31, 39, 0.88);
+    }
+
+    .mini-card strong {
+      display: block;
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+    }
+
+    .mini-card span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .section {
+      margin-top: 28px;
+      padding: 26px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .section-head p {
+      max-width: 54ch;
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .label {
+      color: var(--accent-2);
+      font-size: 0.84rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .card,
+    .tip,
+    .practice {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      background: var(--panel-strong);
+    }
+
+    .card h3,
+    .tip strong,
+    .practice strong {
+      margin-bottom: 10px;
+      display: block;
+      font-size: 1rem;
+    }
+
+    .card p,
+    .tip p,
+    .practice p {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .gesture-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .gesture-card {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+      background: var(--panel-strong);
+    }
+
+    .gesture-card h3 {
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .chip {
+      display: inline-block;
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(21, 32, 43, 0.14);
+      background: var(--chip-bg);
+      font-family: var(--mono);
+      font-size: 0.9rem;
+    }
+
+    .why,
+    .memory {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+
+    .memory {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--line);
+    }
+
+    .two-up {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 18px;
+    }
+
+    .stack {
+      display: grid;
+      gap: 12px;
+    }
+
+    .footer-note {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border-left: 4px solid var(--accent);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.56);
+      color: var(--muted);
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .two-up {
+        grid-template-columns: 1fr;
+      }
+
+      h1 { max-width: none; }
+
+      .section-head {
+        flex-direction: column;
+        align-items: start;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .shell {
+        padding: 18px 14px 40px;
+      }
+
+      .hero,
+      .section {
+        padding: 20px;
+        border-radius: 24px;
+      }
+
+      .mini-board {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-topbar {
+        flex-direction: column;
+        align-items: start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-topbar">
+        <div class="eyebrow">Guide 03 • iPad</div>
+        <button class="theme-toggle" type="button" id="themeToggle" aria-pressed="false">Night Mode: Off</button>
+      </div>
+      <div class="hero-grid">
+        <div>
+          <h1>Learn the iPad moves that make it feel fluid.</h1>
+          <p>This guide focuses on the practical stuff worth learning first: gestures, multitasking, typing and editing tricks, and a few setup habits that make the iPad much easier to use every day.</p>
+        </div>
+        <div class="mini-board">
+          <article class="mini-card">
+            <strong>Swipe up</strong>
+            <span>Go Home or start multitasking fast.</span>
+          </article>
+          <article class="mini-card">
+            <strong>Three fingers</strong>
+            <span>Undo, redo, copy, paste, and cut with touch.</span>
+          </article>
+          <article class="mini-card">
+            <strong>Globe key</strong>
+            <span>Opens up keyboard shortcuts and app switching.</span>
+          </article>
+          <article class="mini-card">
+            <strong>Split View</strong>
+            <span>Work with two apps without constantly bouncing around.</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="label">Start Here</div>
+          <h2>The iPad gestures worth learning first</h2>
+        </div>
+        <p>These are the moves that make the biggest difference the fastest, especially if you want the iPad to feel more productive and less like a giant phone.</p>
+      </div>
+      <div class="gesture-grid">
+        <article class="gesture-card">
+          <h3>Go Home</h3>
+          <div class="chips"><span class="chip">Swipe up from bottom</span></div>
+          <p class="why">Exit any app quickly without hunting for a button.</p>
+          <p class="memory">Think: one clean upward sweep resets your view.</p>
+        </article>
+        <article class="gesture-card">
+          <h3>App Switcher</h3>
+          <div class="chips"><span class="chip">Swipe up and hold</span></div>
+          <p class="why">See recent apps and spaces so you can jump around faster.</p>
+          <p class="memory">Up and pause means “show me everything I was doing.”</p>
+        </article>
+        <article class="gesture-card">
+          <h3>Switch between recent apps</h3>
+          <div class="chips"><span class="chip">Swipe left or right on bottom bar</span></div>
+          <p class="why">Quickly bounce between the apps you just used.</p>
+          <p class="memory">Use it like a tiny track beneath your work.</p>
+        </article>
+        <article class="gesture-card">
+          <h3>Open Control Center</h3>
+          <div class="chips"><span class="chip">Swipe down from top-right</span></div>
+          <p class="why">Brightness, volume, Wi-Fi, rotation lock, and Focus are right there.</p>
+          <p class="memory">Top-right is the “controls” corner.</p>
+        </article>
+        <article class="gesture-card">
+          <h3>Open Notification Center</h3>
+          <div class="chips"><span class="chip">Swipe down from top-center</span></div>
+          <p class="why">Check alerts without leaving your app entirely.</p>
+          <p class="memory">Top center is where your incoming stuff lives.</p>
+        </article>
+        <article class="gesture-card">
+          <h3>Spotlight search</h3>
+          <div class="chips"><span class="chip">Swipe down on Home Screen</span></div>
+          <p class="why">Launch apps, find files, notes, messages, and settings instantly.</p>
+          <p class="memory">If you are hunting, search first.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="label">Multitasking</div>
+          <h2>The iPad features that unlock real work</h2>
+        </div>
+        <p>These are the moves that make the iPad feel much more capable for writing, planning, browsing, or studying.</p>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Use Split View for pairs that belong together</h3>
+          <p>Good combos: Safari and Notes, Messages and Calendar, Files and Pages, or YouTube and Notes for learning.</p>
+        </article>
+        <article class="card">
+          <h3>Use Slide Over for short visits</h3>
+          <p>Keep one smaller app floating for quick checks, messages, or reference material without replacing your main app.</p>
+        </article>
+        <article class="card">
+          <h3>Drag and drop between apps</h3>
+          <p>You can drag text, links, images, and files from one app to another, which is one of the most useful iPad habits to build.</p>
+        </article>
+        <article class="card">
+          <h3>Files matters more than people think</h3>
+          <p>Once you start saving things intentionally in Files, the iPad becomes much easier to treat like a real work device.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="label">Keyboard Flow</div>
+          <h2>If you use a keyboard, these are the big wins</h2>
+        </div>
+        <p>The iPad becomes dramatically faster with even a few keyboard habits, especially if you use Magic Keyboard or another external keyboard.</p>
+      </div>
+      <div class="gesture-grid">
+        <article class="gesture-card">
+          <h3>See available shortcuts</h3>
+          <div class="chips"><span class="chip">Hold Globe</span><span class="chip">or hold ⌘ in many apps</span></div>
+          <p class="why">Shows what the current app supports so you do not have to guess.</p>
+          <p class="memory">When in doubt, hold the helper key.</p>
+        </article>
+        <article class="gesture-card">
+          <h3>App switcher from keyboard</h3>
+          <div class="chips"><span class="chip">Globe</span><span class="chip">A</span></div>
+          <p class="why">Jump between apps without touching the screen.</p>
+          <p class="memory">Treat Globe like your iPad command hub.</p>
+        </article>
+        <article class="gesture-card">
+          <h3>Search from keyboard</h3>
+          <div class="chips"><span class="chip">⌘</span><span class="chip">Space</span></div>
+          <p class="why">Open search instantly from almost anywhere.</p>
+          <p class="memory">Same muscle memory as a MacBook.</p>
+        </article>
+        <article class="gesture-card">
+          <h3>Use standard editing shortcuts</h3>
+          <div class="chips"><span class="chip">⌘ C</span><span class="chip">⌘ V</span><span class="chip">⌘ Z</span></div>
+          <p class="why">Copy, paste, undo, and other familiar shortcuts work in many apps.</p>
+          <p class="memory">The iPad is much closer to a Mac than it first looks.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="label">Editing</div>
+          <h2>Touch tricks that make typing and editing less annoying</h2>
+        </div>
+        <p>These are the things that make text work feel smoother whether you are taking notes, writing, or cleaning things up.</p>
+      </div>
+      <div class="two-up">
+        <div class="stack">
+          <article class="tip">
+            <strong>Pinch with three fingers to copy.</strong>
+            <p>A small pinch-in gesture copies selected text or content.</p>
+          </article>
+          <article class="tip">
+            <strong>Spread with three fingers to paste.</strong>
+            <p>The reverse gesture pastes, which can feel surprisingly quick once it clicks.</p>
+          </article>
+          <article class="tip">
+            <strong>Swipe left with three fingers to undo.</strong>
+            <p>Great when you type or delete something by mistake and do not want to shake the device or hunt menus.</p>
+          </article>
+          <article class="tip">
+            <strong>Swipe right with three fingers to redo.</strong>
+            <p>Pairs naturally with undo and is worth learning as a set.</p>
+          </article>
+        </div>
+        <div class="stack">
+          <article class="practice">
+            <strong>Turn the keyboard into a trackpad.</strong>
+            <p>Press and hold the space bar to move the text cursor more precisely when typing feels clumsy.</p>
+          </article>
+          <article class="practice">
+            <strong>Select text by dragging the cursor handles.</strong>
+            <p>It is still one of the simplest ways to get clean text selection on iPad.</p>
+          </article>
+          <article class="practice">
+            <strong>Use Scribble if you write with Pencil.</strong>
+            <p>Writing directly into text fields can be faster than switching modes when you are thinking visually.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="label">Setup Wins</div>
+          <h2>The settings and habits that pay off most</h2>
+        </div>
+        <p>A few small choices make the iPad more pleasant and far more practical long term.</p>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Put your best tools in the Dock</h3>
+          <p>The Dock makes app switching and multitasking much faster, so treat it like your actual work shelf.</p>
+        </article>
+        <article class="card">
+          <h3>Use widgets for glanceable stuff</h3>
+          <p>Calendar, Reminders, Weather, Batteries, and Notes widgets can cut down on needless app hopping.</p>
+        </article>
+        <article class="card">
+          <h3>Learn one Files folder system</h3>
+          <p>Even a simple structure like Projects, Personal, and Reference makes the device easier to trust.</p>
+        </article>
+        <article class="card">
+          <h3>Choose a note app and stick with it</h3>
+          <p>The iPad gets better when capture is consistent. Notes, Goodnotes, Notability, or another favorite can all work.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="label">Practice</div>
+          <h2>A quick drill to make the iPad feel more fluent</h2>
+        </div>
+        <p>Five minutes of repetition is usually enough to make a few of these feel natural.</p>
+      </div>
+      <div class="two-up">
+        <div class="stack">
+          <article class="practice">
+            <strong>Practice Set</strong>
+            <p>Open Spotlight, launch Notes, swipe into App Switcher, place Safari beside Notes in Split View, then drag a link or sentence from Safari into Notes.</p>
+          </article>
+          <article class="practice">
+            <strong>Keyboard Set</strong>
+            <p>If you use an external keyboard, hold Globe to see shortcuts, then try search, app switching, copy, paste, and undo.</p>
+          </article>
+        </div>
+        <div class="stack">
+          <article class="practice">
+            <strong>Memory rule</strong>
+            <p>On iPad, most power comes from three places: the bottom bar, the Dock, and the Globe key.</p>
+          </article>
+          <article class="practice">
+            <strong>Best mindset</strong>
+            <p>Treat the iPad like a light, touch-first work machine and it starts to make a lot more sense.</p>
+          </article>
+        </div>
+      </div>
+      <div class="footer-note">
+        This guide is designed to stay practical rather than encyclopedic. If you want, the next version can go deeper into Apple Pencil, Stage Manager, study workflows, or “best iPad setup for travel and work.”
+      </div>
+    </section>
+  </main>
+  <script>
+    const body = document.body;
+    const themeToggle = document.getElementById("themeToggle");
+    const storedTheme = localStorage.getItem("ipad-guide-theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    function applyTheme(theme) {
+      body.dataset.theme = theme;
+      const dark = theme === "dark";
+      themeToggle.textContent = dark ? "Night Mode: On" : "Night Mode: Off";
+      themeToggle.setAttribute("aria-pressed", String(dark));
+    }
+
+    applyTheme(storedTheme || (prefersDark ? "dark" : "light"));
+
+    themeToggle.addEventListener("click", () => {
+      const nextTheme = body.dataset.theme === "dark" ? "light" : "dark";
+      localStorage.setItem("ipad-guide-theme", nextTheme);
+      applyTheme(nextTheme);
+    });
+  </script>
+</body>
+</html>

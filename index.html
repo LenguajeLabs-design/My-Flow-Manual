@@ -6,20 +6,20 @@
   <title>My Flow Manual</title>
   <style>
     :root {
-      --bg: #f4eee5;
-      --panel: rgba(255, 252, 247, 0.92);
-      --panel-strong: #fffdf9;
+      --bg: #edf5f5;
+      --panel: rgba(248, 254, 254, 0.92);
+      --panel-strong: #ffffff;
       --ink: #17212b;
       --muted: #667381;
       --line: rgba(23, 33, 43, 0.12);
-      --accent: #d96b2b;
-      --accent-soft: rgba(217, 107, 43, 0.12);
-      --accent-2: #2f6d67;
-      --shadow: 0 24px 60px rgba(74, 54, 34, 0.12);
+      --accent: #138a8f;
+      --accent-soft: rgba(19, 138, 143, 0.12);
+      --accent-2: #4a7fd1;
+      --shadow: 0 24px 60px rgba(52, 80, 96, 0.12);
       --radius: 24px;
       --sans: "Avenir Next", "Segoe UI", sans-serif;
-      --hero-glow-1: rgba(217, 107, 43, 0.16);
-      --hero-glow-2: rgba(47, 109, 103, 0.15);
+      --hero-glow-1: rgba(19, 138, 143, 0.16);
+      --hero-glow-2: rgba(74, 127, 209, 0.15);
     }
 
     body[data-theme="dark"] {
@@ -46,7 +46,7 @@
       background:
         radial-gradient(circle at top left, var(--hero-glow-1), transparent 24%),
         radial-gradient(circle at top right, var(--hero-glow-2), transparent 22%),
-        linear-gradient(180deg, #f9f4eb 0%, var(--bg) 100%);
+        linear-gradient(180deg, #f7fcfc 0%, var(--bg) 100%);
       line-height: 1.5;
       transition: background 220ms ease, color 220ms ease;
     }
@@ -79,7 +79,7 @@
       width: 220px;
       height: 220px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(217, 107, 43, 0.16), transparent 68%);
+      background: radial-gradient(circle, rgba(19, 138, 143, 0.16), transparent 68%);
       pointer-events: none;
     }
 
@@ -326,7 +326,7 @@
           </div>
           <div class="pill">
             <strong>iPad</strong>
-            <span>Next up for gestures, multitasking, and keyboard moves.</span>
+            <span>Live now with gestures, multitasking, keyboard flow, and everyday setup wins.</span>
           </div>
           <div class="pill">
             <strong>Browsers</strong>
@@ -355,6 +355,11 @@
           <span>How to work well in this app: ask better, manage files and browser work, and turn Codex into a strong daily collaborator.</span>
           <span class="guide-tag">Guide 02</span>
         </a>
+        <a class="guide-card" href="outputs/ipad-guide.html">
+          <strong>iPad Guide</strong>
+          <span>Practical gestures, multitasking moves, keyboard shortcuts, editing tricks, and everyday habits that make the iPad feel fluid.</span>
+          <span class="guide-tag">Guide 03</span>
+        </a>
       </div>
     </section>
 
@@ -367,11 +372,6 @@
         <p>The structure is ready so each new guide can slot in right after the last one.</p>
       </div>
       <div class="guide-grid">
-        <div class="queue-card">
-          <strong>iPad Guide</strong>
-          <span>Shortcuts, split view, gestures, text editing, and Apple Pencil flow.</span>
-          <span class="queue-tag">Guide 03</span>
-        </div>
         <div class="queue-card">
           <strong>Safari, Brave, and Chrome</strong>
           <span>Tabs, windows, navigation, searching, and power-user moves for each browser.</span>
