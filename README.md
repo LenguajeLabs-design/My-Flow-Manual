@@ -6,11 +6,11 @@ A personal collection of simple, visual guides that help me learn the shortcuts,
 
 - `index.html`: homepage for the collection
 - `outputs/macbook-shortcuts-guide.html`: first published guide
+- `outputs/codex-guide.html`: second published guide
 
 ## Planned next guides
 
 - iPad
-- Codex
 - Safari
 - Brave
 - Chrome

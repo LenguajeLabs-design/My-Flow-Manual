@@ -18,6 +18,23 @@
       --shadow: 0 24px 60px rgba(74, 54, 34, 0.12);
       --radius: 24px;
       --sans: "Avenir Next", "Segoe UI", sans-serif;
+      --hero-glow-1: rgba(217, 107, 43, 0.16);
+      --hero-glow-2: rgba(47, 109, 103, 0.15);
+    }
+
+    body[data-theme="dark"] {
+      --bg: #0f141a;
+      --panel: rgba(22, 29, 37, 0.92);
+      --panel-strong: #171e25;
+      --ink: #ecf3fb;
+      --muted: #9eb0c2;
+      --line: rgba(236, 243, 251, 0.1);
+      --accent: #ff9a5c;
+      --accent-soft: rgba(255, 154, 92, 0.14);
+      --accent-2: #75c8bc;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.34);
+      --hero-glow-1: rgba(255, 154, 92, 0.14);
+      --hero-glow-2: rgba(117, 200, 188, 0.12);
     }
 
     * { box-sizing: border-box; }
@@ -27,10 +44,11 @@
       font-family: var(--sans);
       color: var(--ink);
       background:
-        radial-gradient(circle at top left, rgba(217, 107, 43, 0.16), transparent 24%),
-        radial-gradient(circle at top right, rgba(47, 109, 103, 0.15), transparent 22%),
+        radial-gradient(circle at top left, var(--hero-glow-1), transparent 24%),
+        radial-gradient(circle at top right, var(--hero-glow-2), transparent 22%),
         linear-gradient(180deg, #f9f4eb 0%, var(--bg) 100%);
       line-height: 1.5;
+      transition: background 220ms ease, color 220ms ease;
     }
 
     .shell {
@@ -63,6 +81,36 @@
       border-radius: 50%;
       background: radial-gradient(circle, rgba(217, 107, 43, 0.16), transparent 68%);
       pointer-events: none;
+    }
+
+    body[data-theme="dark"] .hero {
+      background:
+        linear-gradient(135deg, rgba(26, 34, 44, 0.95), rgba(18, 24, 31, 0.92)),
+        var(--panel);
+    }
+
+    .hero-topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 18px;
+    }
+
+    .theme-toggle {
+      border: 1px solid var(--line);
+      background: var(--panel-strong);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font: inherit;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(24, 34, 45, 0.08);
+      transition: transform 160ms ease, background 160ms ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
     }
 
     .eyebrow {
@@ -114,6 +162,10 @@
       border-radius: 18px;
       border: 1px solid var(--line);
       background: rgba(255, 255, 255, 0.76);
+    }
+
+    body[data-theme="dark"] .pill {
+      background: rgba(24, 31, 39, 0.88);
     }
 
     .pill strong {
@@ -206,6 +258,10 @@
       background: rgba(255, 255, 255, 0.58);
     }
 
+    body[data-theme="dark"] .queue-card {
+      background: rgba(24, 31, 39, 0.56);
+    }
+
     footer {
       margin-top: 28px;
       color: var(--muted);
@@ -239,15 +295,23 @@
       .pill-grid {
         grid-template-columns: 1fr;
       }
+
+      .hero-topbar {
+        flex-direction: column;
+        align-items: start;
+      }
     }
   </style>
 </head>
 <body>
   <main class="shell">
     <section class="hero">
+      <div class="hero-topbar">
+        <div class="eyebrow">My Flow Manual</div>
+        <button class="theme-toggle" type="button" id="themeToggle" aria-pressed="false">Night Mode: Off</button>
+      </div>
       <div class="hero-grid">
         <div>
-          <div class="eyebrow">My Flow Manual</div>
           <h1>Shortcut guides for the tools I use every day.</h1>
           <p>A personal collection of simple, visual guides that help me learn the shortcuts, tips, and workflows for my everyday tools.</p>
         </div>
@@ -257,16 +321,16 @@
             <span>Live now with shortcuts, gestures, and night mode.</span>
           </div>
           <div class="pill">
+            <strong>Codex</strong>
+            <span>Live now with prompt patterns, app workflow, and everyday operating tips.</span>
+          </div>
+          <div class="pill">
             <strong>iPad</strong>
             <span>Next up for gestures, multitasking, and keyboard moves.</span>
           </div>
           <div class="pill">
-            <strong>Codex</strong>
-            <span>Future guide for best prompts, flows, and quick wins.</span>
-          </div>
-          <div class="pill">
             <strong>Browsers</strong>
-            <span>Safari, Brave, and Chrome in the same growing collection.</span>
+            <span>Safari, Brave, and Chrome will slot into the same growing collection.</span>
           </div>
         </div>
       </div>
@@ -286,6 +350,11 @@
           <span>Core keyboard shortcuts, Finder flow, multitasking moves, trackpad gestures, dark mode, and key-location help.</span>
           <span class="guide-tag">Guide 01</span>
         </a>
+        <a class="guide-card" href="outputs/codex-guide.html">
+          <strong>Codex Guide</strong>
+          <span>How to work well in this app: ask better, manage files and browser work, and turn Codex into a strong daily collaborator.</span>
+          <span class="guide-tag">Guide 02</span>
+        </a>
       </div>
     </section>
 
@@ -301,16 +370,11 @@
         <div class="queue-card">
           <strong>iPad Guide</strong>
           <span>Shortcuts, split view, gestures, text editing, and Apple Pencil flow.</span>
-          <span class="queue-tag">Guide 02</span>
-        </div>
-        <div class="queue-card">
-          <strong>Codex Guide</strong>
-          <span>Useful prompt shapes, workflow habits, and the shortcuts that speed up iteration.</span>
           <span class="queue-tag">Guide 03</span>
         </div>
         <div class="queue-card">
-          <strong>Browser Guides</strong>
-          <span>Safari, Brave, and Chrome with tabs, windows, navigation, and power-user moves.</span>
+          <strong>Safari, Brave, and Chrome</strong>
+          <span>Tabs, windows, navigation, searching, and power-user moves for each browser.</span>
           <span class="queue-tag">Guide 04+</span>
         </div>
       </div>
@@ -318,5 +382,26 @@
 
     <footer>Built as a growing personal shortcut library.</footer>
   </main>
+  <script>
+    const body = document.body;
+    const themeToggle = document.getElementById("themeToggle");
+    const storedTheme = localStorage.getItem("my-flow-manual-theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    function applyTheme(theme) {
+      body.dataset.theme = theme;
+      const dark = theme === "dark";
+      themeToggle.textContent = dark ? "Night Mode: On" : "Night Mode: Off";
+      themeToggle.setAttribute("aria-pressed", String(dark));
+    }
+
+    applyTheme(storedTheme || (prefersDark ? "dark" : "light"));
+
+    themeToggle.addEventListener("click", () => {
+      const nextTheme = body.dataset.theme === "dark" ? "light" : "dark";
+      localStorage.setItem("my-flow-manual-theme", nextTheme);
+      applyTheme(nextTheme);
+    });
+  </script>
 </body>
 </html>

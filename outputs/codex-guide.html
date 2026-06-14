@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codex Guide</title>
+  <style>
+    :root {
+      --bg: #f0eee8;
+      --panel: rgba(255, 252, 247, 0.92);
+      --panel-strong: #fffdf9;
+      --ink: #18222d;
+      --muted: #5f6d7b;
+      --line: rgba(24, 34, 45, 0.12);
+      --accent: #0f8b8d;
+      --accent-soft: rgba(15, 139, 141, 0.12);
+      --accent-2: #d96b2b;
+      --shadow: 0 24px 60px rgba(53, 64, 72, 0.12);
+      --radius: 24px;
+      --mono: "SFMono-Regular", "Menlo", "Monaco", monospace;
+      --sans: "Avenir Next", "Segoe UI", sans-serif;
+      --hero-glow-1: rgba(15, 139, 141, 0.16);
+      --hero-glow-2: rgba(217, 107, 43, 0.14);
+      --code-bg: rgba(15, 139, 141, 0.08);
+    }
+
+    body[data-theme="dark"] {
+      --bg: #0e1419;
+      --panel: rgba(20, 28, 36, 0.92);
+      --panel-strong: #171e25;
+      --ink: #edf4fb;
+      --muted: #9db0c3;
+      --line: rgba(237, 244, 251, 0.1);
+      --accent: #66d4d0;
+      --accent-soft: rgba(102, 212, 208, 0.14);
+      --accent-2: #ff9a5c;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.36);
+      --hero-glow-1: rgba(102, 212, 208, 0.13);
+      --hero-glow-2: rgba(255, 154, 92, 0.12);
+      --code-bg: rgba(102, 212, 208, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, var(--hero-glow-1), transparent 24%),
+        radial-gradient(circle at top right, var(--hero-glow-2), transparent 22%),
+        linear-gradient(180deg, #f8f5ef 0%, var(--bg) 100%);
+      line-height: 1.55;
+      transition: background 220ms ease, color 220ms ease;
+    }
+
+    .shell {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px 20px 72px;
+    }
+
+    .hero,
+    .section {
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 32px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(245, 255, 254, 0.88)),
+        var(--panel);
+    }
+
+    body[data-theme="dark"] .hero {
+      background:
+        linear-gradient(135deg, rgba(23, 31, 38, 0.96), rgba(16, 22, 29, 0.92)),
+        var(--panel);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -90px;
+      bottom: -120px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(15, 139, 141, 0.16), transparent 68%);
+      pointer-events: none;
+    }
+
+    .hero-topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 18px;
+    }
+
+    .theme-toggle {
+      border: 1px solid var(--line);
+      background: var(--panel-strong);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--accent-soft);
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3, p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 11ch;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 0.96;
+      margin-bottom: 14px;
+      letter-spacing: -0.05em;
+    }
+
+    .hero p {
+      max-width: 60ch;
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 20px;
+      align-items: end;
+    }
+
+    .mini-board {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .mini-card {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    body[data-theme="dark"] .mini-card {
+      background: rgba(24, 31, 39, 0.88);
+    }
+
+    .mini-card strong {
+      display: block;
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+    }
+
+    .mini-card span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .section {
+      margin-top: 28px;
+      padding: 26px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .section-head p {
+      max-width: 54ch;
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .label {
+      color: var(--accent-2);
+      font-size: 0.84rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      background: var(--panel-strong);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 18px;
+    }
+
+    .stack {
+      display: grid;
+      gap: 12px;
+    }
+
+    .stack-item,
+    .prompt,
+    .rule {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: var(--panel-strong);
+    }
+
+    .stack-item strong,
+    .prompt strong,
+    .rule strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .stack-item p,
+    .prompt p,
+    .rule p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .prompt code,
+    .micro code {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 8px;
+      background: var(--code-bg);
+      font-family: var(--mono);
+      font-size: 0.92rem;
+      color: var(--ink);
+    }
+
+    .prompt pre {
+      margin: 12px 0 0;
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(15, 139, 141, 0.08);
+      overflow: auto;
+      white-space: pre-wrap;
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      color: var(--ink);
+    }
+
+    .micro {
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .footer-note {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border-left: 4px solid var(--accent);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.56);
+      color: var(--muted);
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .workflow-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        max-width: none;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: start;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .shell {
+        padding: 18px 14px 40px;
+      }
+
+      .hero,
+      .section {
+        padding: 20px;
+        border-radius: 24px;
+      }
+
+      .mini-board {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-topbar {
+        flex-direction: column;
+        align-items: start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-topbar">
+        <div class="eyebrow">Guide 02 • Codex</div>
+        <button class="theme-toggle" type="button" id="themeToggle" aria-pressed="false">Night Mode: Off</button>
+      </div>
+      <div class="hero-grid">
+        <div>
+          <h1>Learn how to work with Codex, not just ask it things.</h1>
+          <p>This page is a practical operating manual for using Codex well inside the app: what to ask for, how to shape requests, where files go, when to use the browser, and the habits that make the collaboration feel smooth instead of frustrating.</p>
+        </div>
+        <div class="mini-board">
+          <article class="mini-card">
+            <strong>Ask clearly</strong>
+            <span>State the outcome, not just the topic.</span>
+          </article>
+          <article class="mini-card">
+            <strong>Use files</strong>
+            <span>Codex works best when it can inspect the real thing.</span>
+          </article>
+          <article class="mini-card">
+            <strong>Think in passes</strong>
+            <span>Build, check, refine, then publish.</span>
+          </article>
+          <article class="mini-card">
+            <strong>Let it drive</strong>
+            <span>For implementation, ask for the change directly.</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="label">Start Here</div>
+          <h2>What Codex is best at in this app</h2>
+        </div>
+        <p>Codex is strongest when it can read the real files, make the edits, check the results, and keep the work moving without making you micromanage every step.</p>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Build and edit</h3>
+          <p>Ask Codex to create pages, change code, adjust styling, wire interactions, and leave the result in your workspace.</p>
+        </article>
+        <article class="card">
+          <h3>Review and debug</h3>
+          <p>It can inspect files, trace behavior, spot likely problems, and suggest or implement fixes.</p>
+        </article>
+        <article class="card">
+          <h3>Research inside the flow</h3>
+          <p>Codex can check docs, compare approaches, and bring the answer back into the code or page you are making.</p>
+        </article>
+        <article class="card">
+          <h3>Run the full loop</h3>
+          <p>The best mode is outcome-first: ask for the change, let it implement it, then refine with follow-up notes.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="label">Prompting</div>
+          <h2>The simplest way to ask well</h2>
+        </div>
+        <p>Codex tends to do better when your request includes a target, a constraint, and a sense of what “done” looks like.</p>
+      </div>
+      <div class="workflow-grid">
+        <div class="stack">
+          <article class="stack-item">
+            <strong>Say the outcome first.</strong>
+            <p>Start with what you want changed or built. Example: “Add a dark mode toggle to the homepage” is stronger than “Can we do dark mode?”</p>
+          </article>
+          <article class="stack-item">
+            <strong>Add the style or guardrails second.</strong>
+            <p>Say things like “keep the same visual language,” “make it feel playful,” or “don’t turn this into a full redesign.”</p>
+          </article>
+          <article class="stack-item">
+            <strong>Use follow-ups instead of giant prompts.</strong>
+            <p>It is usually better to say “make the helper smaller” after seeing the page than to pack every future preference into one message.</p>
+          </article>
+          <article class="stack-item">
+            <strong>Ask for action when you want action.</strong>
+            <p>If you want actual changes, phrase the request as a direct doing task, not just a question about possibilities.</p>
+          </article>
+        </div>
+        <div class="stack">
+          <article class="prompt">
+            <strong>Good shape for a build request</strong>
+            <pre>Make a guide for Codex in this same style.
+Focus on how to work well in the app.
+Keep it practical, visual, and beginner-friendly.
+Add dark mode too.</pre>
+          </article>
+          <article class="prompt">
+            <strong>Good shape for a refinement request</strong>
+            <pre>This feels too big.
+Keep the feature, but make it lighter and more contextual.
+I only want it to appear when I need it.</pre>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="label">App Map</div>
+          <h2>How the app tends to work in practice</h2>
+        </div>
+        <p>You do not need to memorize everything. What matters is understanding which surface to use for which kind of work.</p>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Chat</h3>
+          <p>Use the chat to give direction, react to drafts, tighten the scope, and keep the project moving.</p>
+        </article>
+        <article class="card">
+          <h3>Workspace files</h3>
+          <p>This is where the real output lives. Codex can read, write, and link directly to the files you are building together.</p>
+        </article>
+        <article class="card">
+          <h3>Outputs folder</h3>
+          <p>Use it for the polished things you want to keep or publish, like finished HTML guides and deliverables.</p>
+        </article>
+        <article class="card">
+          <h3>Work folder</h3>
+          <p>Use it for drafts, scratch files, notes, or experiments that help the final output but are not the final output.</p>
+        </article>
+        <article class="card">
+          <h3>In-app browser</h3>
+          <p>Useful for checking live pages, verifying what a site looks like, and testing what changed after edits.</p>
+        </article>
+        <article class="card">
+          <h3>Threads</h3>
+          <p>Think of a thread like a lane of work. Keep one thread focused on one project or outcome when you can.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="label">Modes</div>
+          <h2>Know which kind of ask you’re making</h2>
+        </div>
+        <p>A lot of friction disappears once you separate planning, implementation, review, and polish.</p>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Planning mode</h3>
+          <p class="micro">Best for: “Help me think through the structure before we build.”</p>
+        </article>
+        <article class="card">
+          <h3>Implementation mode</h3>
+          <p class="micro">Best for: “Go ahead and make the change.”</p>
+        </article>
+        <article class="card">
+          <h3>Review mode</h3>
+          <p class="micro">Best for: “Check this for bugs, risks, or missing pieces.”</p>
+        </article>
+        <article class="card">
+          <h3>Polish mode</h3>
+          <p class="micro">Best for: “Make it clearer, smaller, sharper, or more beautiful.”</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="label">Habits</div>
+          <h2>What makes Codex feel genuinely useful</h2>
+        </div>
+        <p>These are the operating habits that usually create the best rhythm with the app.</p>
+      </div>
+      <div class="workflow-grid">
+        <div class="stack">
+          <article class="rule">
+            <strong>Show, then steer.</strong>
+            <p>If you have a page, screenshot, file, or repo, point Codex at the real thing instead of describing it from memory.</p>
+          </article>
+          <article class="rule">
+            <strong>Keep requests concrete.</strong>
+            <p>“Make the keyboard helper feel less permanent” is easier to act on than “make it better.”</p>
+          </article>
+          <article class="rule">
+            <strong>Let the first draft be fast.</strong>
+            <p>It is usually more efficient to get a version on the page and then react to it together.</p>
+          </article>
+          <article class="rule">
+            <strong>Use Codex for the boring middle.</strong>
+            <p>File setup, repetitive edits, content structuring, style cleanup, and verification are exactly where it shines.</p>
+          </article>
+        </div>
+        <div class="stack">
+          <article class="rule">
+            <strong>Ask for one main change at a time when refining.</strong>
+            <p>Big multi-part feedback is possible, but one sharp direction often gets the cleanest revision.</p>
+          </article>
+          <article class="rule">
+            <strong>Use the browser when appearance matters.</strong>
+            <p>If the question is visual, having Codex inspect the rendered result is usually better than guessing from code alone.</p>
+          </article>
+          <article class="rule">
+            <strong>Use follow-up passes for personality.</strong>
+            <p>Once the structure works, ask for tone, visual identity, smoother motion, or stronger clarity.</p>
+          </article>
+          <article class="rule">
+            <strong>Save the polished version in outputs.</strong>
+            <p>This keeps the collection clean and makes it easier to publish or link later.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="label">Starter Prompts</div>
+          <h2>Useful asks you’ll probably reuse</h2>
+        </div>
+        <p>These are simple patterns worth keeping around because they match how Codex likes to work.</p>
+      </div>
+      <div class="stack">
+        <article class="prompt">
+          <strong>Build something new</strong>
+          <pre>Make a first version of this.
+Keep it simple and useful.
+Then check the result and improve the rough spots.</pre>
+        </article>
+        <article class="prompt">
+          <strong>Refine a page</strong>
+          <pre>This is close.
+Keep the structure, but make it feel lighter, clearer, and more intentional.</pre>
+        </article>
+        <article class="prompt">
+          <strong>Review a change</strong>
+          <pre>Review this like a real code review.
+Focus on bugs, risks, regressions, and missing tests first.</pre>
+        </article>
+        <article class="prompt">
+          <strong>Turn research into output</strong>
+          <pre>Use current official sources where needed,
+then turn what you learn into a practical guide I can actually use.</pre>
+        </article>
+      </div>
+      <div class="footer-note">
+        This guide is an MVP: it focuses on the practical habits and app workflow that make Codex useful day to day. The next version can go deeper into threads, publishing, browser workflows, automations, and a dedicated “best prompts for Codex” section.
+      </div>
+    </section>
+  </main>
+  <script>
+    const body = document.body;
+    const themeToggle = document.getElementById("themeToggle");
+    const storedTheme = localStorage.getItem("codex-guide-theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    function applyTheme(theme) {
+      body.dataset.theme = theme;
+      const dark = theme === "dark";
+      themeToggle.textContent = dark ? "Night Mode: On" : "Night Mode: Off";
+      themeToggle.setAttribute("aria-pressed", String(dark));
+    }
+
+    applyTheme(storedTheme || (prefersDark ? "dark" : "light"));
+
+    themeToggle.addEventListener("click", () => {
+      const nextTheme = body.dataset.theme === "dark" ? "light" : "dark";
+      localStorage.setItem("codex-guide-theme", nextTheme);
+      applyTheme(nextTheme);
+    });
+  </script>
+</body>
+</html>
