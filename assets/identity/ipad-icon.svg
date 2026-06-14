@@ -1,22 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
   <title id="title">iPad Touch Workflows Icon</title>
-  <desc id="desc">Badge icon representing iPad gestures, multitasking, and touch workflows.</desc>
+  <desc id="desc">Transparent-background icon for iPad gestures, multitasking, and touch workflows.</desc>
   <defs>
     <style>
-      .ink{fill:#172533}
-      .blue{fill:#2f7dd3}
-      .teal{fill:#10a7a5}
-      .soft{fill:#e7f7f6}
-      .stroke{fill:none;stroke:#172533;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
-      .stroke-blue{fill:none;stroke:#2f7dd3;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
-      .stroke-teal{fill:none;stroke:#10a7a5;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+      .paper{fill:#f4fbfb}
+      .teal{fill:#14aaa4}
+      .blue{fill:#347fd0}
+      .line{fill:none;stroke:#162636;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+      .line-blue{fill:none;stroke:#347fd0;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+      .line-teal{fill:none;stroke:#14aaa4;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
     </style>
   </defs>
-  <rect x="18" y="18" width="92" height="92" rx="24" class="soft"/>
-  <rect x="38" y="28" width="52" height="72" rx="10" class="stroke"/>
-  <path d="M64 39v50" class="stroke-blue"/>
-  <path d="M48 82h12" class="stroke-teal"/>
-  <path d="M68 52h12" class="stroke-teal"/>
-  <circle cx="80" cy="80" r="11" class="blue"/>
-  <path d="M76 80h8M80 76v8" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+  <rect x="20" y="20" width="120" height="120" rx="32" class="paper"/>
+  <rect x="49" y="37" width="62" height="88" rx="13" class="line"/>
+  <path d="M80 53v55" class="line-blue"/>
+  <path d="M61 97h14" class="line-teal"/>
+  <path d="M87 65h14" class="line-teal"/>
+  <path d="M65 112h30" class="line"/>
+  <circle cx="102" cy="100" r="15" class="blue"/>
+  <path d="M96 100h12M102 94v12" stroke="#ffffff" stroke-width="7" stroke-linecap="round"/>
 </svg>

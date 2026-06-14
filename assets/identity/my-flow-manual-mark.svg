@@ -1,21 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
   <title id="title">My Flow Manual Mark</title>
-  <desc id="desc">Icon-only mark for My Flow Manual.</desc>
+  <desc id="desc">Icon-only transparent-background mark for My Flow Manual.</desc>
   <defs>
     <style>
-      .ink{fill:#172533}
-      .blue{fill:#2f7dd3}
-      .teal{fill:#10a7a5}
-      .soft{fill:#e7f7f6}
-      .stroke-blue{fill:none;stroke:#2f7dd3;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
-      .stroke-ink{fill:none;stroke:#172533;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
-      .stroke-teal{fill:none;stroke:#10a7a5;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+      .paper{fill:#f4fbfb}
+      .teal{fill:#14aaa4}
+      .blue{fill:#347fd0}
+      .line{fill:none;stroke:#162636;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+      .line-blue{fill:none;stroke:#347fd0;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+      .line-teal{fill:none;stroke:#14aaa4;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
     </style>
   </defs>
-  <rect x="18" y="18" width="92" height="92" rx="24" class="soft"/>
-  <path d="M40 42h29c12 0 21 9 21 21s-9 21-21 21H51" class="stroke-blue"/>
-  <path d="M51 84L38 71l13-13" class="stroke-blue"/>
-  <path d="M41 94h37" class="stroke-teal"/>
-  <circle cx="40" cy="42" r="7" class="teal"/>
-  <circle cx="87" cy="94" r="7" class="blue"/>
+  <rect x="20" y="20" width="120" height="120" rx="32" class="paper"/>
+  <path d="M60 39h45l18 18v59c0 10-8 18-18 18H60c-10 0-18-8-18-18V57c0-10 8-18 18-18z" class="line"/>
+  <path d="M105 39v22h22" class="line-blue"/>
+  <path d="M59 75h32c12 0 20 8 20 19s-8 19-20 19H72" class="line-blue"/>
+  <path d="M72 113L58 99l14-14" class="line-blue"/>
+  <path d="M60 124h39" class="line-teal"/>
+  <circle cx="59" cy="75" r="8" class="teal"/>
+  <circle cx="112" cy="124" r="8" class="blue"/>
 </svg>
