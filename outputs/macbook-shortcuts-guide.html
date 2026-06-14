@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MacBook Shortcuts Guide</title>
+  <style>
+    :root {
+      --bg: #f5f0e8;
+      --panel: rgba(255, 252, 247, 0.9);
+      --panel-strong: #fffdf8;
+      --ink: #18222d;
+      --muted: #5b6672;
+      --line: rgba(24, 34, 45, 0.12);
+      --accent: #d96b2b;
+      --accent-soft: rgba(217, 107, 43, 0.12);
+      --accent-2: #2f6d67;
+      --shadow: 0 24px 60px rgba(82, 59, 31, 0.12);
+      --radius: 24px;
+      --mono: "SFMono-Regular", "Menlo", "Monaco", monospace;
+      --sans: "Avenir Next", "Segoe UI", sans-serif;
+      --hero-glow-1: rgba(217, 107, 43, 0.18);
+      --hero-glow-2: rgba(47, 109, 103, 0.18);
+      --key-bg: linear-gradient(180deg, #fff 0%, #f3ede4 100%);
+      --key-shadow: inset 0 -2px 0 rgba(24, 34, 45, 0.08);
+    }
+
+    body[data-theme="dark"] {
+      --bg: #0f141a;
+      --panel: rgba(22, 29, 37, 0.9);
+      --panel-strong: #171e25;
+      --ink: #ecf3fb;
+      --muted: #9eb0c2;
+      --line: rgba(236, 243, 251, 0.1);
+      --accent: #ff9a5c;
+      --accent-soft: rgba(255, 154, 92, 0.14);
+      --accent-2: #75c8bc;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.34);
+      --hero-glow-1: rgba(255, 154, 92, 0.14);
+      --hero-glow-2: rgba(117, 200, 188, 0.12);
+      --key-bg: linear-gradient(180deg, #263341 0%, #1a222c 100%);
+      --key-shadow: inset 0 -2px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, var(--hero-glow-1), transparent 28%),
+        radial-gradient(circle at top right, var(--hero-glow-2), transparent 24%),
+        linear-gradient(180deg, #f9f4eb 0%, var(--bg) 100%);
+      line-height: 1.55;
+      transition: background 220ms ease, color 220ms ease;
+    }
+
+    .shell {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px 20px 72px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      padding: 32px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 248, 238, 0.88)),
+        var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -120px auto;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(217, 107, 43, 0.16), transparent 68%);
+      pointer-events: none;
+    }
+
+    body[data-theme="dark"] .hero {
+      background:
+        linear-gradient(135deg, rgba(26, 34, 44, 0.95), rgba(18, 24, 31, 0.92)),
+        var(--panel);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--accent-soft);
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3, p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 10ch;
+      font-size: clamp(2.8rem, 6vw, 5.6rem);
+      line-height: 0.95;
+      margin-bottom: 14px;
+      letter-spacing: -0.05em;
+    }
+
+    .hero p {
+      max-width: 62ch;
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 20px;
+      align-items: end;
+    }
+
+    .hero-topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 18px;
+    }
+
+    .theme-toggle {
+      border: 1px solid var(--line);
+      background: var(--panel-strong);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font: inherit;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(24, 34, 45, 0.08);
+      transition: transform 160ms ease, background 160ms ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+    }
+
+    .mini-board {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .mini-card {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.74);
+      backdrop-filter: blur(12px);
+    }
+
+    body[data-theme="dark"] .mini-card {
+      background: rgba(24, 31, 39, 0.88);
+    }
+
+    .mini-card strong {
+      display: block;
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+    }
+
+    .mini-card span {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .section {
+      margin-top: 28px;
+      padding: 26px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .section-head p {
+      max-width: 54ch;
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .label {
+      color: var(--accent-2);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .shortcut-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .shortcut-card {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      background: var(--panel-strong);
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .shortcut-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px rgba(24, 34, 45, 0.08);
+    }
+
+    .shortcut-card h3 {
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    .keys {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    kbd {
+      min-width: 40px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(24, 34, 45, 0.16);
+      background: var(--key-bg);
+      box-shadow: var(--key-shadow);
+      font-family: var(--mono);
+      font-size: 0.92rem;
+      text-align: center;
+    }
+
+    kbd[data-known-key] {
+      cursor: help;
+      position: relative;
+    }
+
+    kbd[data-known-key]:hover,
+    kbd[data-known-key]:focus-visible {
+      outline: none;
+      border-color: rgba(217, 107, 43, 0.55);
+      box-shadow: inset 0 -2px 0 rgba(24, 34, 45, 0.08), 0 0 0 4px rgba(217, 107, 43, 0.14);
+    }
+
+    .why,
+    .memory {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+
+    .memory {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--line);
+    }
+
+    .two-up {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+    }
+
+    .tip-list,
+    .practice-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .tip,
+    .practice {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: var(--panel-strong);
+    }
+
+    .tip strong,
+    .practice strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .tip p,
+    .practice p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .footer-note {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border-left: 4px solid var(--accent);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.56);
+      color: var(--muted);
+    }
+
+    .keyboard-helper {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: min(300px, calc(100vw - 28px));
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255, 252, 247, 0.92);
+      box-shadow: 0 20px 50px rgba(24, 34, 45, 0.16);
+      backdrop-filter: blur(18px);
+      z-index: 20;
+      opacity: 0;
+      transform: translateY(16px);
+      pointer-events: none;
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .keyboard-helper.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    body[data-theme="dark"] .keyboard-helper {
+      background: rgba(20, 27, 34, 0.94);
+    }
+
+    .keyboard-helper h3 {
+      margin-bottom: 4px;
+      font-size: 0.94rem;
+    }
+
+    .keyboard-helper p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .helper-copy {
+      margin-bottom: 10px;
+    }
+
+    .keyboard-map {
+      display: grid;
+      gap: 4px;
+      margin-top: 8px;
+      transform: scale(0.82);
+      transform-origin: top left;
+      width: 122%;
+    }
+
+    .keyboard-row {
+      display: grid;
+      grid-template-columns: repeat(16, 1fr);
+      gap: 4px;
+    }
+
+    .map-key {
+      min-height: 28px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: var(--panel-strong);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      padding: 3px;
+      transition: transform 160ms ease, background 160ms ease, color 160ms ease, border-color 160ms ease;
+    }
+
+    .map-key.wide-2 { grid-column: span 2; }
+    .map-key.wide-3 { grid-column: span 3; }
+    .map-key.wide-4 { grid-column: span 4; }
+    .map-key.wide-5 { grid-column: span 5; }
+    .map-key.wide-6 { grid-column: span 6; }
+
+    .map-key.active {
+      background: var(--accent-soft);
+      border-color: rgba(217, 107, 43, 0.5);
+      color: var(--ink);
+      transform: translateY(-1px);
+    }
+
+    .helper-hint {
+      margin-top: 2px;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .two-up {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        max-width: none;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .keyboard-helper {
+        position: static;
+        width: 100%;
+        margin-top: 24px;
+        display: none;
+      }
+
+      .keyboard-helper.is-visible {
+        display: block;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .shell {
+        padding: 18px 14px 40px;
+      }
+
+      .hero,
+      .section {
+        padding: 20px;
+        border-radius: 24px;
+      }
+
+      .mini-board {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-topbar {
+        flex-direction: column;
+        align-items: start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-topbar">
+        <div class="eyebrow">MacBook Shortcuts Guide</div>
+        <button class="theme-toggle" type="button" id="themeToggle" aria-pressed="false">Night Mode: Off</button>
+      </div>
+      <div class="hero-grid">
+        <div>
+          <h1>Learn the moves that make macOS feel fast.</h1>
+          <p>
+            A clean, practical cheat sheet for the shortcuts, gestures, and tiny setup tricks that make a MacBook feel fluent.
+            This page focuses on the stuff worth memorizing first, plus a few hidden gems that pay off every day.
+          </p>
+        </div>
+        <div class="mini-board">
+          <article class="mini-card">
+            <strong>⌘ + Space</strong>
+            <span>Open Spotlight and stop hunting for apps.</span>
+          </article>
+          <article class="mini-card">
+            <strong>⌘ + Tab</strong>
+            <span>Jump between apps without touching the trackpad.</span>
+          </article>
+          <article class="mini-card">
+            <strong>⇧ + ⌘ + 4</strong>
+            <span>Snip part of the screen in seconds.</span>
+          </article>
+          <article class="mini-card">
+            <strong>Space</strong>
+            <span>Preview files instantly with Quick Look.</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="label">Start Here</div>
+          <h2>The 12 shortcuts worth learning first</h2>
+        </div>
+        <p>These give you the biggest day-to-day payoff on a MacBook, especially if you want to work faster with less clicking.</p>
+      </div>
+      <div class="shortcut-grid">
+        <article class="shortcut-card">
+          <h3>Search anything</h3>
+          <div class="keys"><kbd>⌘</kbd><kbd>Space</kbd></div>
+          <p class="why">Open Spotlight to launch apps, find files, do math, and jump around your Mac.</p>
+          <p class="memory">Think: command the whole machine, then type what you want.</p>
+        </article>
+        <article class="shortcut-card">
+          <h3>Switch apps</h3>
+          <div class="keys"><kbd>⌘</kbd><kbd>Tab</kbd></div>
+          <p class="why">Cycle through open apps without breaking your flow.</p>
+          <p class="memory">This is the Mac version of “take me to my other workspace.”</p>
+        </article>
+        <article class="shortcut-card">
+          <h3>Switch windows in one app</h3>
+          <div class="keys"><kbd>⌘</kbd><kbd>`</kbd></div>
+          <p class="why">Flip between multiple windows of the same app.</p>
+          <p class="memory">Use it when Command-Tab gets you to the right app, but not the right window.</p>
+        </article>
+        <article class="shortcut-card">
+          <h3>Force quit a stuck app</h3>
+          <div class="keys"><kbd>⌥</kbd><kbd>⌘</kbd><kbd>Esc</kbd></div>
+          <p class="why">Open the force quit panel when something freezes.</p>
+          <p class="memory">This is your “panic button,” but only for the misbehaving app.</p>
+        </article>
+        <article class="shortcut-card">
+          <h3>Close a window</h3>
+          <div class="keys"><kbd>⌘</kbd><kbd>W</kbd></div>
+          <p class="why">Close the front window or tab quickly.</p>
+          <p class="memory">W is for window, not whole app.</p>
+        </article>
+        <article class="shortcut-card">
+          <h3>Quit an app</h3>
+          <div class="keys"><kbd>⌘</kbd><kbd>Q</kbd></div>
+          <p class="why">Actually exit the app instead of just closing its window.</p>
+          <p class="memory">Q is for quit the whole thing.</p>
+        </article>
+        <article class="shortcut-card">
+          <h3>Take screenshots</h3>
+          <div class="keys"><kbd>⇧</kbd><kbd>⌘</kbd><kbd>5</kbd></div>
+          <p class="why">Open the screenshot toolbar for full screen, partial capture, or screen recording.</p>
+          <p class="memory">This is the “capture center” shortcut.</p>
+        </article>
+        <article class="shortcut-card">
+          <h3>Quick snip</h3>
+          <div class="keys"><kbd>⇧</kbd><kbd>⌘</kbd><kbd>4</kbd></div>
+          <p class="why">Capture just a selected part of the screen.</p>
+          <p class="memory">Use this when you know exactly what you want to grab.</p>
+        </article>
+        <article class="shortcut-card">
+          <h3>Preview a file</h3>
+          <div class="keys"><kbd>Space</kbd></div>
+          <p class="why">Quick Look opens a file preview in Finder without launching the app.</p>
+          <p class="memory">Tap space before you double-click anything.</p>
+        </article>
+        <article class="shortcut-card">
+          <h3>New Finder folder</h3>
+          <div class="keys"><kbd>⇧</kbd><kbd>⌘</kbd><kbd>N</kbd></div>
+          <p class="why">Create a new folder instantly while organizing files.</p>
+          <p class="memory">N is for new, with Shift because it creates something.</p>
+        </article>
+        <article class="shortcut-card">
+          <h3>Go to Downloads</h3>
+          <div class="keys"><kbd>⌥</kbd><kbd>⌘</kbd><kbd>L</kbd></div>
+          <p class="why">Jump straight to your Downloads folder from Finder.</p>
+          <p class="memory">Use it when files seem to disappear after a download.</p>
+        </article>
+        <article class="shortcut-card">
+          <h3>Lock the screen</h3>
+          <div class="keys"><kbd>⌃</kbd><kbd>⌘</kbd><kbd>Q</kbd></div>
+          <p class="why">Secure your Mac instantly when you step away.</p>
+          <p class="memory">Quit your session view without quitting your apps.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="label">Windows And Focus</div>
+          <h2>Shortcuts that make multitasking feel easy</h2>
+        </div>
+        <p>These are the ones that help macOS click into place once you start juggling tabs, windows, and multiple apps.</p>
+      </div>
+      <div class="shortcut-grid">
+        <article class="shortcut-card">
+          <h3>Mission Control</h3>
+          <div class="keys"><kbd>⌃</kbd><kbd>↑</kbd></div>
+          <p class="why">See all open windows and spaces at once.</p>
+          <p class="memory">Up means zoom out and look at the whole room.</p>
+        </article>
+        <article class="shortcut-card">
+          <h3>App Exposé</h3>
+          <div class="keys"><kbd>⌃</kbd><kbd>↓</kbd></div>
+          <p class="why">See every open window for the app you are in.</p>
+          <p class="memory">Down means drill into the app you already chose.</p>
+        </article>
+        <article class="shortcut-card">
+          <h3>Show desktop</h3>
+          <div class="keys"><kbd>fn</kbd><kbd>F11</kbd></div>
+          <p class="why">Clear your windows out of the way to get to the desktop fast.</p>
+          <p class="memory">Great when you need a file sitting on the desktop right now.</p>
+        </article>
+        <article class="shortcut-card">
+          <h3>Hide the current app</h3>
+          <div class="keys"><kbd>⌘</kbd><kbd>H</kbd></div>
+          <p class="why">Make the front app disappear without quitting it.</p>
+          <p class="memory">H is for hide, useful when a window is cluttering your view.</p>
+        </article>
+        <article class="shortcut-card">
+          <h3>Hide other apps</h3>
+          <div class="keys"><kbd>⌥</kbd><kbd>⌘</kbd><kbd>H</kbd></div>
+          <p class="why">Keep the app you care about and tuck everything else away.</p>
+          <p class="memory">An instant focus mode for your current task.</p>
+        </article>
+        <article class="shortcut-card">
+          <h3>Toggle full screen</h3>
+          <div class="keys"><kbd>⌃</kbd><kbd>⌘</kbd><kbd>F</kbd></div>
+          <p class="why">Send the current app into full screen when supported.</p>
+          <p class="memory">F is for full screen, especially helpful on smaller displays.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="label">Finder Flow</div>
+          <h2>The file tricks that save surprising amounts of time</h2>
+        </div>
+        <p>Finder feels slow when you click everything. These shortcuts fix that fast.</p>
+      </div>
+      <div class="shortcut-grid">
+        <article class="shortcut-card">
+          <h3>Open a new Finder window</h3>
+          <div class="keys"><kbd>⌘</kbd><kbd>N</kbd></div>
+          <p class="why">Start a fresh Finder window for dragging files side by side.</p>
+          <p class="memory">Simple but underrated.</p>
+        </article>
+        <article class="shortcut-card">
+          <h3>Go to folder</h3>
+          <div class="keys"><kbd>⇧</kbd><kbd>⌘</kbd><kbd>G</kbd></div>
+          <p class="why">Jump directly to a folder path instead of clicking through layers.</p>
+          <p class="memory">G is for go exactly where you mean.</p>
+        </article>
+        <article class="shortcut-card">
+          <h3>Move to Trash</h3>
+          <div class="keys"><kbd>⌘</kbd><kbd>Delete</kbd></div>
+          <p class="why">Delete the selected file without dragging it.</p>
+          <p class="memory">Cleaner than drag-and-drop cleanup.</p>
+        </article>
+        <article class="shortcut-card">
+          <h3>Move instead of paste-copy</h3>
+          <div class="keys"><kbd>⌥</kbd><kbd>⌘</kbd><kbd>V</kbd></div>
+          <p class="why">After copying a file, paste it as a move to the new location.</p>
+          <p class="memory">This is the MacBook file-moving secret most people miss.</p>
+        </article>
+        <article class="shortcut-card">
+          <h3>Preview pane</h3>
+          <div class="keys"><kbd>⇧</kbd><kbd>⌘</kbd><kbd>P</kbd></div>
+          <p class="why">Toggle the Finder preview pane to scan files faster.</p>
+          <p class="memory">P is for preview before opening.</p>
+        </article>
+        <article class="shortcut-card">
+          <h3>Path bar</h3>
+          <div class="keys"><kbd>⌥</kbd><kbd>⌘</kbd><kbd>P</kbd></div>
+          <p class="why">Show the full file path at the bottom of Finder windows.</p>
+          <p class="memory">Tiny tweak, huge improvement when learning folder structure.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="label">Trackpad Wins</div>
+          <h2>Gestures and small tricks people underuse</h2>
+        </div>
+        <p>Some of the best MacBook “shortcuts” are gestures or settings that remove friction all day long.</p>
+      </div>
+      <div class="two-up">
+        <div class="tip-list">
+          <article class="tip">
+            <strong>Use three-finger swipe up for Mission Control.</strong>
+            <p>It gives you the same overview as Control-Up Arrow, but feels more physical and easier to remember.</p>
+          </article>
+          <article class="tip">
+            <strong>Use three-finger swipe down for App Exposé.</strong>
+            <p>Perfect when one app has too many windows open and you want just that app’s layout.</p>
+          </article>
+          <article class="tip">
+            <strong>Tap with three fingers to look up words or dates.</strong>
+            <p>Dictionary, definitions, and quick context appear without opening another app.</p>
+          </article>
+          <article class="tip">
+            <strong>Turn on tap-to-click if you like lighter input.</strong>
+            <p>Many people work faster when they can tap instead of physically pressing the trackpad.</p>
+          </article>
+          <article class="tip">
+            <strong>Set up hot corners for one move actions.</strong>
+            <p>Good choices: desktop, Mission Control, Lock Screen, or Quick Note.</p>
+          </article>
+        </div>
+        <div class="practice-list">
+          <article class="practice">
+            <strong>Practice Set: 5-minute fluency drill</strong>
+            <p>Open Spotlight, launch Notes, switch to Safari, take a partial screenshot, then lock your screen. Repeat three times.</p>
+          </article>
+          <article class="practice">
+            <strong>Memory rule</strong>
+            <p>On Mac, <strong>Command</strong> is the key you reach for most. Once you trust that, learning the rest gets much easier.</p>
+          </article>
+          <article class="practice">
+            <strong>Best beginner setup tweak</strong>
+            <p>Keep the Dock hidden and rely more on Spotlight plus Command-Tab. It gently trains faster habits.</p>
+          </article>
+          <article class="practice">
+            <strong>Best file habit</strong>
+            <p>Preview with Space before opening. It is one of the fastest ways to make Finder feel less cluttered.</p>
+          </article>
+        </div>
+      </div>
+      <div class="footer-note">
+        Based on Apple’s Mac keyboard shortcut guidance and common macOS workflows. If you want, we can turn this into a version that matches your exact laptop setup, like coding shortcuts, study shortcuts, or creator shortcuts.
+      </div>
+    </section>
+
+    <aside class="keyboard-helper" id="keyboardHelper" aria-live="polite">
+      <div class="helper-copy">
+        <h3 id="helperTitle">Hover a key to see where it is</h3>
+        <p id="helperText">Move over keys like ⌘, ⌥, ⌃, fn, Tab, Esc, or Delete and this mini MacBook keyboard will light up the right spot.</p>
+      </div>
+      <div class="keyboard-map" id="keyboardMap">
+        <div class="keyboard-row">
+          <div class="map-key" data-map-key="esc">Esc</div>
+          <div class="map-key" data-map-key="f1">F1</div>
+          <div class="map-key" data-map-key="f2">F2</div>
+          <div class="map-key" data-map-key="f3">F3</div>
+          <div class="map-key" data-map-key="f4">F4</div>
+          <div class="map-key" data-map-key="f5">F5</div>
+          <div class="map-key" data-map-key="f6">F6</div>
+          <div class="map-key" data-map-key="f7">F7</div>
+          <div class="map-key" data-map-key="f8">F8</div>
+          <div class="map-key" data-map-key="f9">F9</div>
+          <div class="map-key" data-map-key="f10">F10</div>
+          <div class="map-key" data-map-key="f11">F11</div>
+          <div class="map-key" data-map-key="f12">F12</div>
+        </div>
+        <div class="keyboard-row">
+          <div class="map-key wide-2" data-map-key="grave">`</div>
+          <div class="map-key" data-map-key="1">1</div>
+          <div class="map-key" data-map-key="2">2</div>
+          <div class="map-key" data-map-key="3">3</div>
+          <div class="map-key" data-map-key="4">4</div>
+          <div class="map-key" data-map-key="5">5</div>
+          <div class="map-key" data-map-key="6">6</div>
+          <div class="map-key" data-map-key="7">7</div>
+          <div class="map-key" data-map-key="8">8</div>
+          <div class="map-key" data-map-key="9">9</div>
+          <div class="map-key" data-map-key="0">0</div>
+          <div class="map-key wide-2" data-map-key="delete">Delete</div>
+        </div>
+        <div class="keyboard-row">
+          <div class="map-key wide-2" data-map-key="tab">Tab</div>
+          <div class="map-key" data-map-key="q">Q</div>
+          <div class="map-key" data-map-key="w">W</div>
+          <div class="map-key" data-map-key="e">E</div>
+          <div class="map-key" data-map-key="r">R</div>
+          <div class="map-key" data-map-key="t">T</div>
+          <div class="map-key" data-map-key="y">Y</div>
+          <div class="map-key" data-map-key="u">U</div>
+          <div class="map-key" data-map-key="i">I</div>
+          <div class="map-key" data-map-key="o">O</div>
+          <div class="map-key" data-map-key="p">P</div>
+        </div>
+        <div class="keyboard-row">
+          <div class="map-key wide-2" data-map-key="caps">Caps</div>
+          <div class="map-key" data-map-key="a">A</div>
+          <div class="map-key" data-map-key="s">S</div>
+          <div class="map-key" data-map-key="d">D</div>
+          <div class="map-key" data-map-key="f">F</div>
+          <div class="map-key" data-map-key="g">G</div>
+          <div class="map-key" data-map-key="h">H</div>
+          <div class="map-key" data-map-key="j">J</div>
+          <div class="map-key" data-map-key="k">K</div>
+          <div class="map-key" data-map-key="l">L</div>
+          <div class="map-key wide-2" data-map-key="return">Return</div>
+        </div>
+        <div class="keyboard-row">
+          <div class="map-key wide-2" data-map-key="shift-left">Shift</div>
+          <div class="map-key" data-map-key="z">Z</div>
+          <div class="map-key" data-map-key="x">X</div>
+          <div class="map-key" data-map-key="c">C</div>
+          <div class="map-key" data-map-key="v">V</div>
+          <div class="map-key" data-map-key="b">B</div>
+          <div class="map-key" data-map-key="n">N</div>
+          <div class="map-key" data-map-key="m">M</div>
+          <div class="map-key wide-3" data-map-key="shift-right">Shift</div>
+        </div>
+        <div class="keyboard-row">
+          <div class="map-key" data-map-key="fn">fn</div>
+          <div class="map-key" data-map-key="control">⌃</div>
+          <div class="map-key" data-map-key="option-left">⌥</div>
+          <div class="map-key" data-map-key="command-left">⌘</div>
+          <div class="map-key wide-6" data-map-key="space">Space</div>
+          <div class="map-key" data-map-key="command-right">⌘</div>
+          <div class="map-key" data-map-key="option-right">⌥</div>
+          <div class="map-key wide-3" data-map-key="arrows">↑ ↓ ← →</div>
+        </div>
+      </div>
+      <p class="helper-hint">Shows only while you are checking a key.</p>
+    </aside>
+  </main>
+  <script>
+    const body = document.body;
+    const themeToggle = document.getElementById("themeToggle");
+    const storedTheme = localStorage.getItem("macbook-guide-theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    function applyTheme(theme) {
+      body.dataset.theme = theme;
+      const dark = theme === "dark";
+      themeToggle.textContent = dark ? "Night Mode: On" : "Night Mode: Off";
+      themeToggle.setAttribute("aria-pressed", String(dark));
+    }
+
+    applyTheme(storedTheme || (prefersDark ? "dark" : "light"));
+
+    themeToggle.addEventListener("click", () => {
+      const nextTheme = body.dataset.theme === "dark" ? "light" : "dark";
+      localStorage.setItem("macbook-guide-theme", nextTheme);
+      applyTheme(nextTheme);
+    });
+
+    const keyInfo = {
+      "⌘": {
+        label: "Command key",
+        map: ["command-left", "command-right"],
+        text: "The Command key sits on both sides of the space bar. It is the main shortcut key on a Mac."
+      },
+      "⌥": {
+        label: "Option key",
+        map: ["option-left", "option-right"],
+        text: "The Option key sits next to Command on each side of the space bar. It is sometimes labeled Alt."
+      },
+      "⌃": {
+        label: "Control key",
+        map: ["control"],
+        text: "Control is on the bottom-left row, just to the right of fn on most MacBook keyboards."
+      },
+      "fn": {
+        label: "Function key",
+        map: ["fn"],
+        text: "The fn key lives in the bottom-left corner. It often unlocks F-keys and system functions."
+      },
+      "Space": {
+        label: "Space bar",
+        map: ["space"],
+        text: "The space bar is the long center key at the bottom of the keyboard."
+      },
+      "Tab": {
+        label: "Tab key",
+        map: ["tab"],
+        text: "Tab is on the left side, just above Caps Lock and left of the Q key."
+      },
+      "Esc": {
+        label: "Escape key",
+        map: ["esc"],
+        text: "Esc is the top-left corner key, above the number row."
+      },
+      "Delete": {
+        label: "Delete key",
+        map: ["delete"],
+        text: "Delete is at the top-right end of the number row on a MacBook keyboard."
+      },
+      "`": {
+        label: "Backtick key",
+        map: ["grave"],
+        text: "The backtick key is on the top-left of the letter area, left of the number 1 key."
+      },
+      "↑": {
+        label: "Arrow keys",
+        map: ["arrows"],
+        text: "The arrow keys are grouped in the bottom-right corner."
+      },
+      "↓": {
+        label: "Arrow keys",
+        map: ["arrows"],
+        text: "The arrow keys are grouped in the bottom-right corner."
+      },
+      "Q": {
+        label: "Q key",
+        map: ["q"],
+        text: "Q sits on the top letter row, just to the right of Tab."
+      },
+      "W": {
+        label: "W key",
+        map: ["w"],
+        text: "W is on the top letter row, between Q and E."
+      },
+      "H": {
+        label: "H key",
+        map: ["h"],
+        text: "H is in the home row, slightly right of center."
+      },
+      "F": {
+        label: "F key",
+        map: ["f"],
+        text: "F is in the home row, left of G and right of D."
+      },
+      "G": {
+        label: "G key",
+        map: ["g"],
+        text: "G is near the center of the home row."
+      },
+      "L": {
+        label: "L key",
+        map: ["l"],
+        text: "L is on the home row near the right side, just before Return."
+      },
+      "P": {
+        label: "P key",
+        map: ["p"],
+        text: "P is on the top letter row at the far right."
+      },
+      "N": {
+        label: "N key",
+        map: ["n"],
+        text: "N sits on the bottom letter row, between B and M."
+      },
+      "V": {
+        label: "V key",
+        map: ["v"],
+        text: "V is on the bottom letter row, between C and B."
+      },
+      "5": {
+        label: "Number 5 key",
+        map: ["5"],
+        text: "5 is on the number row near the left-center."
+      },
+      "4": {
+        label: "Number 4 key",
+        map: ["4"],
+        text: "4 is on the number row between 3 and 5."
+      },
+      "F11": {
+        label: "F11 key",
+        map: ["f11"],
+        text: "F11 lives near the top-right of the function row."
+      }
+    };
+
+    const keyboardHelper = document.getElementById("keyboardHelper");
+    const helperTitle = document.getElementById("helperTitle");
+    const helperText = document.getElementById("helperText");
+    const allMapKeys = Array.from(document.querySelectorAll(".map-key"));
+    const chips = Array.from(document.querySelectorAll("kbd"));
+    let helperTimer;
+
+    function showHelper() {
+      clearTimeout(helperTimer);
+      keyboardHelper.classList.add("is-visible");
+    }
+
+    function hideHelperSoon(delay = 120) {
+      clearTimeout(helperTimer);
+      helperTimer = window.setTimeout(() => {
+        keyboardHelper.classList.remove("is-visible");
+      }, delay);
+    }
+
+    function clearHighlights() {
+      allMapKeys.forEach((key) => key.classList.remove("active"));
+    }
+
+    function showKeyInfo(token) {
+      const info = keyInfo[token];
+      if (!info) {
+        return;
+      }
+      showHelper();
+      helperTitle.textContent = info.label;
+      helperText.textContent = info.text;
+      clearHighlights();
+      info.map.forEach((name) => {
+        const target = document.querySelector(`[data-map-key="${name}"]`);
+        if (target) {
+          target.classList.add("active");
+        }
+      });
+    }
+
+    function resetHelper() {
+      helperTitle.textContent = "Hover a key to see where it is";
+      helperText.textContent = "Move over keys like ⌘, ⌥, ⌃, fn, Tab, Esc, or Delete and this mini MacBook keyboard will light up the right spot.";
+      clearHighlights();
+      hideHelperSoon();
+    }
+
+    chips.forEach((chip) => {
+      const token = chip.textContent.trim();
+      if (!keyInfo[token]) {
+        return;
+      }
+      chip.dataset.knownKey = token;
+      chip.tabIndex = 0;
+      chip.addEventListener("mouseenter", () => showKeyInfo(token));
+      chip.addEventListener("focus", () => showKeyInfo(token));
+      chip.addEventListener("mouseleave", resetHelper);
+      chip.addEventListener("blur", resetHelper);
+      chip.addEventListener("click", () => {
+        showKeyInfo(token);
+        hideHelperSoon(2200);
+      });
+    });
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Flow Manual</title>
+  <style>
+    :root {
+      --bg: #f4eee5;
+      --panel: rgba(255, 252, 247, 0.92);
+      --panel-strong: #fffdf9;
+      --ink: #17212b;
+      --muted: #667381;
+      --line: rgba(23, 33, 43, 0.12);
+      --accent: #d96b2b;
+      --accent-soft: rgba(217, 107, 43, 0.12);
+      --accent-2: #2f6d67;
+      --shadow: 0 24px 60px rgba(74, 54, 34, 0.12);
+      --radius: 24px;
+      --sans: "Avenir Next", "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(217, 107, 43, 0.16), transparent 24%),
+        radial-gradient(circle at top right, rgba(47, 109, 103, 0.15), transparent 22%),
+        linear-gradient(180deg, #f9f4eb 0%, var(--bg) 100%);
+      line-height: 1.5;
+    }
+
+    .shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    .hero,
+    .section {
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 34px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -50px;
+      top: -50px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(217, 107, 43, 0.16), transparent 68%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    h1, h2, h3, p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 10ch;
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      max-width: 58ch;
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.9fr;
+      gap: 20px;
+      align-items: end;
+    }
+
+    .pill-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .pill {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.76);
+    }
+
+    .pill strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .pill span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .section {
+      margin-top: 28px;
+      padding: 28px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: end;
+      margin-bottom: 20px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 48ch;
+      margin-bottom: 0;
+    }
+
+    .label {
+      color: var(--accent-2);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.84rem;
+      margin-bottom: 8px;
+    }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .guide-card,
+    .queue-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      padding: 20px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: var(--panel-strong);
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .guide-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 36px rgba(23, 33, 43, 0.08);
+    }
+
+    .guide-card strong,
+    .queue-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.08rem;
+    }
+
+    .guide-card span,
+    .queue-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.94rem;
+      margin-bottom: 14px;
+    }
+
+    .guide-tag,
+    .queue-tag {
+      display: inline-block;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .queue-card {
+      background: rgba(255, 255, 255, 0.58);
+    }
+
+    footer {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-align: center;
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid,
+      .section-head {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+
+      h1 {
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .shell {
+        padding: 18px 14px 40px;
+      }
+
+      .hero,
+      .section {
+        padding: 20px;
+        border-radius: 24px;
+      }
+
+      .pill-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">My Flow Manual</div>
+          <h1>Shortcut guides for the tools I use every day.</h1>
+          <p>A personal collection of simple, visual guides that help me learn the shortcuts, tips, and workflows for my everyday tools.</p>
+        </div>
+        <div class="pill-grid">
+          <div class="pill">
+            <strong>MacBook</strong>
+            <span>Live now with shortcuts, gestures, and night mode.</span>
+          </div>
+          <div class="pill">
+            <strong>iPad</strong>
+            <span>Next up for gestures, multitasking, and keyboard moves.</span>
+          </div>
+          <div class="pill">
+            <strong>Codex</strong>
+            <span>Future guide for best prompts, flows, and quick wins.</span>
+          </div>
+          <div class="pill">
+            <strong>Browsers</strong>
+            <span>Safari, Brave, and Chrome in the same growing collection.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="label">Collection</div>
+          <h2>Published guides</h2>
+        </div>
+        <p>Each guide is designed to be quick to scan, easy to remember, and useful enough to revisit.</p>
+      </div>
+      <div class="guide-grid">
+        <a class="guide-card" href="outputs/macbook-shortcuts-guide.html">
+          <strong>MacBook Shortcuts Guide</strong>
+          <span>Core keyboard shortcuts, Finder flow, multitasking moves, trackpad gestures, dark mode, and key-location help.</span>
+          <span class="guide-tag">Guide 01</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="label">Queue</div>
+          <h2>What’s coming next</h2>
+        </div>
+        <p>The structure is ready so each new guide can slot in right after the last one.</p>
+      </div>
+      <div class="guide-grid">
+        <div class="queue-card">
+          <strong>iPad Guide</strong>
+          <span>Shortcuts, split view, gestures, text editing, and Apple Pencil flow.</span>
+          <span class="queue-tag">Guide 02</span>
+        </div>
+        <div class="queue-card">
+          <strong>Codex Guide</strong>
+          <span>Useful prompt shapes, workflow habits, and the shortcuts that speed up iteration.</span>
+          <span class="queue-tag">Guide 03</span>
+        </div>
+        <div class="queue-card">
+          <strong>Browser Guides</strong>
+          <span>Safari, Brave, and Chrome with tabs, windows, navigation, and power-user moves.</span>
+          <span class="queue-tag">Guide 04+</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>Built as a growing personal shortcut library.</footer>
+  </main>
+</body>
+</html>
