@@ -7,27 +7,27 @@
   <link rel="icon" type="image/svg+xml" href="assets/identity/my-flow-manual-mark.svg">
   <style>
     :root {
-      --bg: #f7f9fe;
-      --bg-2: #f2f8fb;
-      --panel: rgba(255, 255, 255, 0.78);
-      --panel-strong: rgba(255, 255, 255, 0.92);
-      --ink: #17315a;
-      --muted: #51688d;
-      --line: rgba(23, 49, 90, 0.1);
+      --bg: #f7f9fb;
+      --bg-2: #edf4f7;
+      --panel: rgba(255, 255, 255, 0.84);
+      --panel-strong: rgba(255, 255, 255, 0.96);
+      --ink: #172434;
+      --muted: #5b6878;
+      --line: rgba(23, 36, 52, 0.12);
       --accent: #159c9f;
-      --accent-2: #2f74d7;
+      --accent-2: #2d65c8;
       --accent-soft: rgba(21, 156, 159, 0.12);
-      --shadow: 0 16px 40px rgba(63, 92, 141, 0.12);
-      --shadow-soft: 0 10px 24px rgba(63, 92, 141, 0.08);
-      --radius: 28px;
+      --shadow: 0 18px 48px rgba(23, 36, 52, 0.11);
+      --shadow-soft: 0 10px 28px rgba(23, 36, 52, 0.08);
+      --radius: 8px;
       --sans: "Avenir Next", "Segoe UI", sans-serif;
     }
 
     body[data-theme="dark"] {
       --bg: #0d1420;
       --bg-2: #101927;
-      --panel: rgba(24, 32, 46, 0.76);
-      --panel-strong: rgba(25, 34, 49, 0.92);
+      --panel: rgba(24, 32, 46, 0.78);
+      --panel-strong: rgba(25, 34, 49, 0.94);
       --ink: #edf4ff;
       --muted: #a6b7d1;
       --line: rgba(237, 244, 255, 0.1);
@@ -45,9 +45,8 @@
       font-family: var(--sans);
       color: var(--ink);
       background:
-        radial-gradient(circle at top left, rgba(39, 212, 209, 0.24), transparent 22%),
-        radial-gradient(circle at top right, rgba(86, 144, 255, 0.2), transparent 20%),
-        radial-gradient(circle at center right, rgba(255, 194, 122, 0.14), transparent 22%),
+        linear-gradient(90deg, rgba(21, 156, 159, 0.12), transparent 35%),
+        linear-gradient(270deg, rgba(47, 116, 215, 0.1), transparent 34%),
         linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
       line-height: 1.45;
       transition: background 220ms ease, color 220ms ease;
@@ -56,13 +55,13 @@
     .shell {
       max-width: 1360px;
       margin: 0 auto;
-      padding: 34px 22px 64px;
+      padding: 28px 22px 64px;
     }
 
     .hero {
-      padding: 34px 36px 30px;
+      padding: 26px 28px 28px;
       border: 1px solid var(--line);
-      border-radius: 38px;
+      border-radius: 12px;
       background: var(--panel);
       box-shadow: var(--shadow);
       backdrop-filter: blur(18px);
@@ -72,7 +71,7 @@
       display: flex;
       justify-content: space-between;
       gap: 16px;
-      align-items: start;
+      align-items: flex-start;
       margin-bottom: 28px;
     }
 
@@ -86,7 +85,7 @@
       border: 1px solid var(--line);
       background: linear-gradient(180deg, rgba(22, 48, 88, 0.98), rgba(16, 32, 60, 0.98));
       color: #f3f8ff;
-      border-radius: 999px;
+      border-radius: var(--radius);
       padding: 14px 20px;
       font: inherit;
       font-weight: 700;
@@ -110,16 +109,16 @@
     }
 
     h1 {
-      max-width: 7.2ch;
-      font-size: clamp(4.25rem, 8vw, 6.5rem);
-      line-height: 0.95;
-      letter-spacing: -0.06em;
+      max-width: 12ch;
+      font-size: 5.25rem;
+      line-height: 0.98;
+      letter-spacing: 0;
       margin-bottom: 18px;
       font-weight: 800;
     }
 
     .hero p {
-      max-width: 31ch;
+      max-width: 36ch;
       color: var(--muted);
       font-size: 1.08rem;
       line-height: 1.55;
@@ -128,49 +127,96 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 34px;
+      grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+      gap: 28px;
       align-items: start;
+    }
+
+    .hero-copy {
+      position: sticky;
+      top: 24px;
+    }
+
+    .official-strip {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 26px;
+    }
+
+    .official-chip {
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel-strong);
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .official-chip img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+
+    .official-chip.wordmark {
+      width: 120px;
+    }
+
+    .official-chip.wordmark img {
+      width: 92px;
+      height: auto;
+    }
+
+    .official-break {
+      display: none;
     }
 
     .resource-grid {
       display: grid;
-      gap: 14px;
+      gap: 12px;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      padding-top: 10px;
     }
 
     .resource-card {
       border: 1px solid var(--line);
-      border-radius: 24px;
+      border-radius: var(--radius);
       background: var(--panel-strong);
       box-shadow: var(--shadow-soft);
       backdrop-filter: blur(10px);
-      padding: 18px 20px;
-      min-height: 116px;
+      padding: 18px;
+      min-height: 166px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
     }
 
     .resource-card.wide {
       grid-column: 1 / -1;
-      min-height: 82px;
+      min-height: 132px;
     }
 
     .resource-head {
       display: flex;
       align-items: center;
-      gap: 14px;
-      margin-bottom: 8px;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
     }
 
     .resource-icon {
-      width: 58px;
-      height: 58px;
+      width: 82px;
+      height: 82px;
       flex: 0 0 auto;
       object-fit: contain;
     }
 
     .resource-wordmark {
-      width: 150px;
+      width: 180px;
       height: auto;
       display: block;
     }
@@ -185,6 +231,24 @@
       color: var(--muted);
       font-size: 0.98rem;
       line-height: 1.5;
+    }
+
+    .resource-media {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .resource-media img {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+    }
+
+    .resource-media img.browser-logo {
+      width: 64px;
+      height: 64px;
     }
 
     .section {
@@ -209,7 +273,7 @@
       margin-bottom: 0;
       font-size: 1.05rem;
       font-weight: 800;
-      letter-spacing: -0.03em;
+      letter-spacing: 0;
     }
 
     .guide-grid {
@@ -224,7 +288,7 @@
       text-decoration: none;
       color: inherit;
       padding: 18px 18px 20px;
-      border-radius: 24px;
+      border-radius: var(--radius);
       border: 1px solid var(--line);
       background: var(--panel-strong);
       box-shadow: var(--shadow-soft);
@@ -251,7 +315,7 @@
       font-size: 1rem;
       text-align: center;
       margin-bottom: 8px;
-      letter-spacing: -0.03em;
+      letter-spacing: 0;
     }
 
     .guide-card p {
@@ -273,7 +337,7 @@
     .guide-tag {
       display: inline-block;
       padding: 7px 12px;
-      border-radius: 999px;
+      border-radius: var(--radius);
       font-size: 0.8rem;
       background: var(--accent-soft);
       color: var(--accent);
@@ -300,26 +364,16 @@
       align-items: center;
     }
 
-    .browser-badge {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: #fff;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.22);
+    .browser-icon {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
     }
-
-    .browser-badge.safari { background: linear-gradient(135deg, #1ca0ff, #2e68ff); }
-    .browser-badge.brave { background: linear-gradient(135deg, #ff7a18, #ff4d2d); }
-    .browser-badge.chrome { background: linear-gradient(135deg, #ffd54b, #ff4b4b 58%, #3a7cff); }
 
     .queue-text h3 {
       margin-bottom: 6px;
       font-size: 1rem;
-      letter-spacing: -0.03em;
+      letter-spacing: 0;
     }
 
     .queue-text p {
@@ -331,7 +385,7 @@
     .queue-pill {
       display: inline-block;
       padding: 8px 12px;
-      border-radius: 999px;
+      border-radius: var(--radius);
       background: rgba(47, 116, 215, 0.12);
       color: var(--accent-2);
       font-size: 0.8rem;
@@ -352,8 +406,8 @@
         grid-template-columns: 1fr;
       }
 
-      .resource-grid {
-        padding-top: 0;
+      .hero-copy {
+        position: static;
       }
     }
 
@@ -379,17 +433,42 @@
 
       .hero {
         padding: 20px;
-        border-radius: 28px;
       }
 
       .hero-topbar {
         flex-direction: column;
-        align-items: start;
+        align-items: flex-start;
       }
 
       h1 {
         max-width: none;
-        font-size: clamp(3.4rem, 18vw, 5rem);
+        font-size: 3.4rem;
+      }
+
+      .official-strip {
+        gap: 8px;
+      }
+
+      .official-break {
+        display: block;
+        flex-basis: 100%;
+        height: 0;
+      }
+
+      .resource-head {
+        align-items: flex-start;
+        flex-direction: column-reverse;
+      }
+
+      .resource-icon {
+        width: 68px;
+        height: 68px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      h1 {
+        font-size: 2.8rem;
       }
     }
   </style>
@@ -405,48 +484,74 @@
       </div>
 
       <div class="hero-grid">
-        <div>
-          <h1>A growing library of practical shortcut guides.</h1>
-          <p>Simple, visual references for learning the tools I use most, from MacBook and iPad workflows to Codex and OpenClaw.</p>
+        <div class="hero-copy">
+          <h1>A practical shortcut library.</h1>
+          <p>Visual guides for the tools Freddie actually uses: Apple devices, Codex, OpenClaw, and the browsers that keep the work moving.</p>
+          <div class="official-strip" aria-label="Official app logos included">
+            <span class="official-chip"><img src="assets/official/apple-sf-symbol-macbook.png" alt="MacBook"></span>
+            <span class="official-chip"><img src="assets/official/apple-sf-symbol-ipad.png" alt="iPad"></span>
+            <span class="official-chip"><img src="assets/official/codex.png" alt="Codex"></span>
+            <span class="official-chip wordmark"><img src="assets/official/openclaw-logo-text.svg" alt="OpenClaw"></span>
+            <span class="official-break" aria-hidden="true"></span>
+            <span class="official-chip"><img src="assets/official/safari.png" alt="Safari"></span>
+            <span class="official-chip"><img src="assets/official/brave-browser.png" alt="Brave"></span>
+            <span class="official-chip"><img src="assets/official/google-chrome.png" alt="Google Chrome"></span>
+          </div>
         </div>
 
         <div class="resource-grid">
           <div class="resource-card">
             <div class="resource-head">
-              <img class="resource-icon" src="assets/identity/macbook-icon.svg" alt="">
-              <div class="resource-title">MacBook</div>
+              <div>
+                <div class="resource-title">MacBook</div>
+                <div class="resource-text">Shortcuts, gestures, and setup wins.</div>
+              </div>
+              <img class="resource-icon" src="assets/official/apple-sf-symbol-macbook.png" alt="">
             </div>
-            <div class="resource-text">Shortcuts, gestures, and setup wins.</div>
           </div>
 
           <div class="resource-card">
             <div class="resource-head">
-              <img class="resource-icon" src="assets/identity/codex-icon.svg" alt="">
-              <div class="resource-title">Codex</div>
+              <div>
+                <div class="resource-title">Codex</div>
+                <div class="resource-text">Prompt patterns, workflow, and app tips.</div>
+              </div>
+              <img class="resource-icon" src="assets/official/codex.png" alt="">
             </div>
-            <div class="resource-text">Prompt patterns, workflow, and app tips.</div>
           </div>
 
           <div class="resource-card">
             <div class="resource-head">
-              <img class="resource-icon" src="assets/identity/ipad-icon.svg" alt="">
-              <div class="resource-title">iPad</div>
+              <div>
+                <div class="resource-title">iPad</div>
+                <div class="resource-text">Gestures, multitasking, and everyday habits.</div>
+              </div>
+              <img class="resource-icon" src="assets/official/apple-sf-symbol-ipad.png" alt="">
             </div>
-            <div class="resource-text">Gestures, multitasking, and everyday habits.</div>
           </div>
 
           <div class="resource-card">
             <div class="resource-head">
-              <img class="resource-wordmark" src="assets/identity/openclaw-logo.svg" alt="OpenClaw">
+              <div>
+                <div class="resource-title">OpenClaw</div>
+                <div class="resource-text">Commands, automation patterns, and workflows.</div>
+              </div>
             </div>
-            <div class="resource-text">Commands, automation patterns, and workflows.</div>
+            <img class="resource-wordmark" src="assets/official/openclaw-logo-text.svg" alt="OpenClaw">
           </div>
 
           <div class="resource-card wide">
             <div class="resource-head">
-              <div class="resource-title">Browsers</div>
+              <div>
+                <div class="resource-title">Browsers</div>
+                <div class="resource-text">Safari, Brave, and Chrome guides coming next.</div>
+              </div>
+              <div class="resource-media" aria-hidden="true">
+                <img class="browser-logo" src="assets/official/safari.png" alt="">
+                <img class="browser-logo" src="assets/official/brave-browser.png" alt="">
+                <img class="browser-logo" src="assets/official/google-chrome.png" alt="">
+              </div>
             </div>
-            <div class="resource-text">Safari, Brave, and Chrome guides coming next.</div>
           </div>
         </div>
       </div>
@@ -460,31 +565,31 @@
 
       <div class="guide-grid">
         <a class="guide-card" href="https://lenguajelabs-design.github.io/openclaw-cheatsheet/" target="_blank" rel="noreferrer">
-          <img class="guide-logo" src="assets/identity/openclaw-logo.svg" alt="OpenClaw">
+          <img class="guide-logo" src="assets/official/openclaw-logo-text.svg" alt="OpenClaw">
           <div class="guide-meta"><span class="guide-tag">External</span></div>
           <p>Your external guide for learning OpenClaw commands, automation patterns, and agent workflows.</p>
-          <div class="guide-meta"><span class="guide-link">Open guide ↗</span></div>
+          <div class="guide-meta"><span class="guide-link">Open guide -></span></div>
         </a>
 
         <a class="guide-card" href="outputs/macbook-shortcuts-guide.html">
-          <img class="guide-icon" src="assets/identity/macbook-icon.svg" alt="">
+          <img class="guide-icon" src="assets/official/apple-sf-symbol-macbook.png" alt="">
           <h3>MacBook</h3>
           <p>Keyboard shortcuts, Finder flow, multitasking moves, trackpad gestures, and key-location help.</p>
-          <div class="guide-meta"><span class="guide-link">Open guide →</span></div>
+          <div class="guide-meta"><span class="guide-link">Open guide -></span></div>
         </a>
 
         <a class="guide-card" href="outputs/codex-guide.html">
-          <img class="guide-icon" src="assets/identity/codex-icon.svg" alt="">
+          <img class="guide-icon" src="assets/official/codex.png" alt="">
           <h3>Codex</h3>
           <p>How to ask better, manage files and browser work, and turn Codex into a strong daily collaborator.</p>
-          <div class="guide-meta"><span class="guide-link">Open guide →</span></div>
+          <div class="guide-meta"><span class="guide-link">Open guide -></span></div>
         </a>
 
         <a class="guide-card" href="outputs/ipad-guide.html">
-          <img class="guide-icon" src="assets/identity/ipad-icon.svg" alt="">
+          <img class="guide-icon" src="assets/official/apple-sf-symbol-ipad.png" alt="">
           <h3>iPad</h3>
           <p>Practical gestures, multitasking moves, keyboard shortcuts, editing tricks, and daily-use habits.</p>
-          <div class="guide-meta"><span class="guide-link">Open guide →</span></div>
+          <div class="guide-meta"><span class="guide-link">Open guide -></span></div>
         </a>
       </div>
     </section>
@@ -497,9 +602,9 @@
 
       <div class="queue-card">
         <div class="browser-icons" aria-hidden="true">
-          <div class="browser-badge safari">S</div>
-          <div class="browser-badge brave">B</div>
-          <div class="browser-badge chrome">C</div>
+          <img class="browser-icon" src="assets/official/safari.png" alt="">
+          <img class="browser-icon" src="assets/official/brave-browser.png" alt="">
+          <img class="browser-icon" src="assets/official/google-chrome.png" alt="">
         </div>
         <div class="queue-text">
           <h3>Safari, Brave, and Chrome</h3>
